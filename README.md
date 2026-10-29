@@ -55,7 +55,7 @@ npm run capture                     # re-record golden fixtures from the real gi
 | `status` | long format, `-s`, `-b`, `--porcelain[=v1]`, `-u[no]`; detached HEAD; paths relative to the current directory |
 | `log` | medium (default), `--oneline`, `--pretty=short\|full\|oneline`, `--format=` (`%H %h %T %t %P %p %an %ae %ad %at %cn %ce %cd %ct %s %b %B %n`), `-n`/`-<n>`, `A..B`, `^A`, `--reverse`, `--first-parent`, `-- <path>` |
 | `diff` | work tree vs index, `--cached`/`--staged`, `<commit>`, `<a> <b>`, `a..b`, `-U<n>`, `--exit-code`, `--quiet`, `--stat`, `--shortstat`, `--name-only`, `--name-status`, `-- <path>`, binary files, exact renames, `--no-index` for two files |
-| `branch` | list, `-v`, `--show-current`, create `[<start>]`, `-f`, `-d`, `-D` |
+| `branch` | list, `-v`/`-vv`, `-r`, `-a`, `--show-current`, create `[<start>]`, `-f`, `-d`, `-D`, `-m`/`-M` (rename, also on an unborn branch), `-c`/`-C` (copy), `-u`, `--unset-upstream` |
 | `checkout` / `switch` | branches, `-b`/`-B`/`-c`/`-C`, detached HEAD (`--detach`), `-`, restoring paths from the index or a commit, refusing to overwrite local changes or untracked files, `-f` |
 | `merge` | fast-forward only: `--ff-only`, `-q`, `-n`/`--no-stat`; writes ORIG_HEAD |
 | `clone` | `<url> [<dir>]`, `-q`, `-b <branch>`, `-o <name>`, `-n`; HTTPS/HTTP smart protocol or a local path; empty repositories |
@@ -128,7 +128,7 @@ The expected output for pkb is the real git's recorded output passed through one
 
 | Check | Result |
 |---|---|
-| Parity suite (`harness/parity.mjs`): 105 scenarios, 16 of them network ones (HTTP via a local `git-http-backend`, SSH via `fake-ssh.mjs`, pull); compares stdout, stderr and exit code of every step, plus the resulting `.pkb`, the work tree and the server's refs, against the real git's fixtures | **105/105 scenarios, 727/727 steps** |
+| Parity suite (`harness/parity.mjs`): 106 scenarios, 16 of them network ones (HTTP via a local `git-http-backend`, SSH via `fake-ssh.mjs`, pull); compares stdout, stderr and exit code of every step, plus the resulting `.pkb`, the work tree and the server's refs, against the real git's fixtures | **106/106 scenarios, 747/747 steps** |
 | Held-out sets, recorded first and only then fixed: 16 local (`tests/holdout-initial-report.json`), 4 network (`tests/net-holdout-initial-report.json`), 1 pull-over-ssh (`tests/pullssh-holdout-initial-report.json`) | first runs: local 12/16 (143/152 steps); network 1/4 (39/41 steps); pull/ssh 14/14 steps with one `ORIG_HEAD` difference; all pass now |
 | Real `git fsck --full --strict` (via `--git-dir`) on every repository pkb produced | **95/95 clean** |
 | Interop (`tests/interop.mjs`): real git → pkb on a repository repacked by `gc`; pkb → real git; pkb reading all 150 objects of an `--aggressive` delta pack; push credentials (none, wrong `PKB_TOKEN`, right `PKB_TOKEN`, credential helper); clone with no identity configured | **all checks pass** |
@@ -187,7 +187,7 @@ These ran but cannot pass on this host, for the reasons given.
 | `src/usage-text.ts` | Usage text, generated from the fixtures through `rebrand()` |
 | `bin/` | `pkb.mjs` and `pkb.cmd` launchers |
 | `harness/` | Scenario definitions (main, held-out, network), runner, local smart-HTTP test server (`http-server.mjs`, wraps git-http-backend), stand-in ssh (`fake-ssh.mjs`, runs git-upload-pack/receive-pack), fixture capture (real git), parity diff (pkb vs rebranded fixtures), transcript |
-| `fixtures/` | 105 golden recordings (16 network) from the real git (`result.json`, plus `dotgit/` with the raw `.git` bytes), and `TRANSCRIPT.md` |
+| `fixtures/` | 106 golden recordings (16 network) from the real git (`result.json`, plus `dotgit/` with the raw `.git` bytes), and `TRANSCRIPT.md` |
 | `tests/` | `interop.mjs`, `rea-scenario.mjs`, `parity-report.json`, `holdout-initial-report.json`, `net-holdout-initial-report.json`, `pullssh-holdout-initial-report.json`, `unit/pack-index.ts` (idx/rev vs git) |
 | `rea-evidence/` | Findings, the decoded command table, Phase 1 and final evidence bundles, obligation ledgers, coverage input and evaluation, and the `verify_reconstruction` outcome |
 | `recon/` | Scripts that produced the evidence, the ledger and the verification inputs |

@@ -169,7 +169,17 @@ export const scenarios = [
       g("branch", "side"), g("branch", "-m", "side", "s2"), g("branch", "-m", "s2", "trunk"), g("branch", "-M", "s2", "trunk"), g("branch", "-m", "nosuch", "x"), g("branch", "-m", "bad..name"),
       g("branch", "-c", "copy1"), g("branch", "-c", "trunk", "copy1"), g("branch", "-C", "trunk", "copy1"), g("branch", "-c", "copy1", "copy2"), g("branch", "-v"), g("log", "--oneline", "-1")],
   },
-  { name: "usage-texts", covers: ["cli.exit-codes"], steps: [init, ...["add", "branch", "cat-file", "checkout", "clone", "commit", "diff", "fetch", "hash-object", "init", "log", "merge", "pull", "push", "remote", "status", "switch", "write-tree"].map((c) => g(c, "-h")), g("status", "--bogus"), g("commit", "-x"), g("diff", "--bogus")] },
+  {
+    name: "config-cmd", covers: ["cmd.config"],
+    steps: [g("config", "--global", "user.name", "Global Name"), g("config", "--global", "user.email", "g@example.com"), g("config", "user.name"), g("config", "user.email", "x@y"),
+      init, g("config", "user.email", "local@example.com"), g("config", "user.email"), g("config", "--get", "user.email"), g("config", "--global", "user.email"),
+      g("config", "nosuch.key"), g("config", "--get", "nosuch.key"), g("config", "nosection"), g("config", "Core.FileMode"), g("config", "--list"), g("config", "--global", "--list"), g("config", "-l", "--local"),
+      g("config", "set", "init.defaultBranch", "main"), g("config", "get", "init.defaultBranch"), g("config", "set", "--global", "alias.st", "status"), g("config", "get", "nosuch.key"),
+      g("config", "--unset", "init.defaultBranch"), g("config", "get", "init.defaultBranch"), g("config", "unset", "--global", "alias.st"), g("config", "list", "--global"),
+      g("config", "remote.origin.url", "https://example.com/r.git"), g("config", "branch.main.remote", "origin"), g("config", "--unset", "nosuch.key"), g("config", "user.name", "Name With \"Quotes\" ; and # hash"),
+      g("config", "user.name"), w("a", "a\n"), g("add", "a"), g("commit", "-m", "with identity")],
+  },
+  { name: "usage-texts", covers: ["cli.exit-codes"], steps: [init, ...["add", "branch", "cat-file", "checkout", "clone", "commit", "config", "diff", "fetch", "hash-object", "init", "log", "merge", "pull", "push", "remote", "status", "switch", "write-tree"].map((c) => g(c, "-h")), g("status", "--bogus"), g("commit", "-x"), g("diff", "--bogus")] },
   {
     name: "detached-head", covers: ["cmd.checkout-switch", "cmd.status", "cmd.branch", "cmd.commit"],
     steps: [...base, w("a.txt", "2\n"), g("commit", "-q", "-am", "second"), g("checkout", "HEAD~1"), g("status"), g("status", "-sb"), g("branch"), w("d", "d\n"), g("add", "d"), g("commit", "-m", "on detached"),

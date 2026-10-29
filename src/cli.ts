@@ -32,6 +32,7 @@ import { cmdFetch } from "./commands/fetch.ts";
 import { cmdPush } from "./commands/push.ts";
 import { cmdRemote } from "./commands/remote.ts";
 import { cmdPull } from "./commands/pull.ts";
+import { cmdConfig } from "./commands/config.ts";
 import { shutdownTransports } from "./net/transport.ts";
 
 export const GIT_VERSION = VERSION;
@@ -62,6 +63,7 @@ const BUILTINS: Record<string, [Handler, number]> = {
   "push": [cmdPush as Handler, 0x01],
   "remote": [cmdRemote as Handler, 0x01],
   "pull": [cmdPull as Handler, 0x09],
+  "config": [cmdConfig as Handler, 0x12],
   "help": [() => (out(PKB_HELP), 0), 0x00],
 };
 

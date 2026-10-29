@@ -2287,6 +2287,139 @@
       "raw_git_dir": true
     },
     {
+      "name": "config-cmd",
+      "covers": [
+        "cmd.config"
+      ],
+      "steps": [
+        {
+          "argv": "config --global user.name Global Name",
+          "exit": 0
+        },
+        {
+          "argv": "config --global user.email g@example.com",
+          "exit": 0
+        },
+        {
+          "argv": "config user.name",
+          "exit": 0
+        },
+        {
+          "argv": "config user.email x@y",
+          "exit": 128
+        },
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "config user.email local@example.com",
+          "exit": 0
+        },
+        {
+          "argv": "config user.email",
+          "exit": 0
+        },
+        {
+          "argv": "config --get user.email",
+          "exit": 0
+        },
+        {
+          "argv": "config --global user.email",
+          "exit": 0
+        },
+        {
+          "argv": "config nosuch.key",
+          "exit": 1
+        },
+        {
+          "argv": "config --get nosuch.key",
+          "exit": 1
+        },
+        {
+          "argv": "config nosection",
+          "exit": 1
+        },
+        {
+          "argv": "config Core.FileMode",
+          "exit": 0
+        },
+        {
+          "argv": "config --list",
+          "exit": 0
+        },
+        {
+          "argv": "config --global --list",
+          "exit": 0
+        },
+        {
+          "argv": "config -l --local",
+          "exit": 0
+        },
+        {
+          "argv": "config set init.defaultBranch main",
+          "exit": 0
+        },
+        {
+          "argv": "config get init.defaultBranch",
+          "exit": 0
+        },
+        {
+          "argv": "config set --global alias.st status",
+          "exit": 0
+        },
+        {
+          "argv": "config get nosuch.key",
+          "exit": 1
+        },
+        {
+          "argv": "config --unset init.defaultBranch",
+          "exit": 0
+        },
+        {
+          "argv": "config get init.defaultBranch",
+          "exit": 1
+        },
+        {
+          "argv": "config unset --global alias.st",
+          "exit": 0
+        },
+        {
+          "argv": "config list --global",
+          "exit": 0
+        },
+        {
+          "argv": "config remote.origin.url https://example.com/r.git",
+          "exit": 0
+        },
+        {
+          "argv": "config branch.main.remote origin",
+          "exit": 0
+        },
+        {
+          "argv": "config --unset nosuch.key",
+          "exit": 5
+        },
+        {
+          "argv": "config user.name Name With \"Quotes\" ; and # hash",
+          "exit": 0
+        },
+        {
+          "argv": "config user.name",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m with identity",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
       "name": "usage-texts",
       "covers": [
         "cli.exit-codes"
@@ -2318,6 +2451,10 @@
         },
         {
           "argv": "commit -h",
+          "exit": 129
+        },
+        {
+          "argv": "config -h",
           "exit": 129
         },
         {

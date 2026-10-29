@@ -139,6 +139,49 @@ export function configSet(file: string, cfg: Config, key: string, value: string)
   cfg.map.set(normKey(key), [value]);
 }
 
+// Remove every value of `key`; a section left empty disappears (fixture config-cmd).
+// Returns false when the key was not set.
+export function configUnset(file: string, cfg: Config | null, key: string): boolean {
+  if (!existsSync(file)) return false;
+  const { section, sub, name } = splitKey(key);
+  const lines = readFileSync(file, "utf8").replace(/\n$/, "").split("\n");
+  const sec = findSection(lines, section, sub);
+  if (!sec) return false;
+  const keep: string[] = [];
+  let removed = false;
+  for (let i = sec[0] + 1; i < sec[1]; i++) {
+    if (lines[i].trim().split(/\s*=/)[0].toLowerCase() === name.toLowerCase()) removed = true;
+    else keep.push(lines[i]);
+  }
+  if (!removed) return false;
+  const rest = keep.filter((l) => l.trim() && !/^\s*[#;]/.test(l));
+  lines.splice(sec[0], sec[1] - sec[0], ...(rest.length ? [lines[sec[0]], ...keep] : []));
+  writeFileSync(file, lines.length ? lines.join("\n") + "\n" : "");
+  cfg?.map.delete(normKey(key));
+  return true;
+}
+
+// Entries of one config file in file order, keys normalised like "git config --list".
+export function configEntries(file: string): [string, string][] {
+  if (!existsSync(file)) return [];
+  const out: [string, string][] = [];
+  const m = new Map<string, string[]>();
+  let section = "";
+  for (const raw of readFileSync(file, "utf8").split(/\r?\n/)) {
+    m.clear();
+    let line = raw.trim();
+    const sec = line.match(/^\[\s*([A-Za-z0-9.-]+)(?:\s+"((?:[^"\\]|\\.)*)")?\s*\]\s*(.*)$/);
+    if (sec) {
+      section = sec[1].toLowerCase() + (sec[2] !== undefined ? "." + sec[2].replace(/\\(.)/g, "$1") : "");
+      line = sec[3].trim();
+    }
+    if (!line || line.startsWith("#") || line.startsWith(";")) continue;
+    parseConfig(`[x]\n${line}`, m);
+    for (const [k, v] of m) out.push([`${section}.${k.slice(2)}`, v[v.length - 1]]);
+  }
+  return out;
+}
+
 // Rename (or copy) a whole [section "sub"] block, e.g. branch settings on "branch -m/-c".
 export function configRenameSection(file: string, cfg: Config, section: string, from: string, to: string, copy: boolean): void {
   if (!existsSync(file)) return;

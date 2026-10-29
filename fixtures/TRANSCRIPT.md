@@ -1505,6 +1505,169 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
+## config-cmd
+
+covers: cmd.config
+
+
+```
+$ git config --global user.name "Global Name"   # exit 0
+```
+
+```
+$ git config --global user.email g@example.com   # exit 0
+```
+
+```
+$ git config user.name   # exit 0
+Global Name
+```
+
+```
+$ git config user.email x@y   # exit 128
+[stderr] fatal: not in a git directory
+```
+
+```
+$ git init -q   # exit 0
+```
+
+```
+$ git config user.email local@example.com   # exit 0
+```
+
+```
+$ git config user.email   # exit 0
+local@example.com
+```
+
+```
+$ git config --get user.email   # exit 0
+local@example.com
+```
+
+```
+$ git config --global user.email   # exit 0
+g@example.com
+```
+
+```
+$ git config nosuch.key   # exit 1
+```
+
+```
+$ git config --get nosuch.key   # exit 1
+```
+
+```
+$ git config nosection   # exit 1
+[stderr] error: key does not contain a section: nosection
+```
+
+```
+$ git config Core.FileMode   # exit 0
+false
+```
+
+```
+$ git config --list   # exit 0
+user.name=Global Name
+user.email=g@example.com
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+user.email=local@example.com
+```
+
+```
+$ git config --global --list   # exit 0
+user.name=Global Name
+user.email=g@example.com
+```
+
+```
+$ git config -l --local   # exit 0
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+user.email=local@example.com
+```
+
+```
+$ git config set init.defaultBranch main   # exit 0
+```
+
+```
+$ git config get init.defaultBranch   # exit 0
+main
+```
+
+```
+$ git config set --global alias.st status   # exit 0
+```
+
+```
+$ git config get nosuch.key   # exit 1
+```
+
+```
+$ git config --unset init.defaultBranch   # exit 0
+```
+
+```
+$ git config get init.defaultBranch   # exit 1
+```
+
+```
+$ git config unset --global alias.st   # exit 0
+```
+
+```
+$ git config list --global   # exit 0
+user.name=Global Name
+user.email=g@example.com
+```
+
+```
+$ git config remote.origin.url https://example.com/r.git   # exit 0
+```
+
+```
+$ git config branch.main.remote origin   # exit 0
+```
+
+```
+$ git config --unset nosuch.key   # exit 5
+```
+
+```
+$ git config user.name "Name With \"Quotes\" ; and # hash"   # exit 0
+```
+
+```
+$ git config user.name   # exit 0
+Name With "Quotes" ; and # hash
+```
+- write `a`
+
+```
+$ git add a   # exit 0
+```
+
+```
+$ git commit -m "with identity"   # exit 0
+[master (root-commit) 434154b] with identity
+ Author: A U Thor <author@example.com>
+ 1 file changed, 1 insertion(+)
+ create mode 100644 a
+```
+
 ## detached-head
 
 covers: cmd.checkout-switch, cmd.status, cmd.branch, cmd.commit
@@ -5868,6 +6031,19 @@ Commit contents options
                           read pathspec from file
     --[no-]pathspec-file-nul
                           with --pathspec-from-file, pathspec elements are separated with NUL character
+
+```
+
+```
+$ git config -h   # exit 129
+usage: git config list [<file-option>] [<display-option>] [--includes]
+   or: git config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp] [--value=<pattern>] [--fixed-value] [--default=<default>] [--url=<url>] <name>
+   or: git config set [<file-option>] [--type=<type>] [--all] [--value=<pattern>] [--fixed-value] <name> <value>
+   or: git config unset [<file-option>] [--all] [--value=<pattern>] [--fixed-value] <name>
+   or: git config rename-section [<file-option>] <old-name> <new-name>
+   or: git config remove-section [<file-option>] <name>
+   or: git config edit [<file-option>]
+   or: git config [<file-option>] --get-colorbool <name> [<stdout-is-tty>]
 
 ```
 

@@ -1,7 +1,159 @@
 {
-  "generated": "2026-10-29T08:08:47.393Z",
+  "generated": "2026-10-29T08:27:39.975Z",
   "impl": "node src/cli.ts",
   "scenarios": [
+    {
+      "name": "cli-no-args",
+      "covers": [
+        "cli.dispatch",
+        "cli.exit-codes"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": null,
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "cli-version",
+      "covers": [
+        "cli.dispatch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": null,
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "cli-unknown-command",
+      "covers": [
+        "cli.unknown-command"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": null,
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "cli-not-a-repo",
+      "covers": [
+        "cli.not-a-repo",
+        "repo.discovery"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": null,
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "cli-worktree-required",
+      "covers": [
+        "cli.worktree-required"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "repo-discovery-subdir",
+      "covers": [
+        "repo.discovery"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/8"
+    },
+    {
+      "name": "repo-git-dir-env",
+      "covers": [
+        "repo.discovery"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/2"
+    },
+    {
+      "name": "init-default",
+      "covers": [
+        "cmd.init",
+        "refs.files"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "init-quiet-branch",
+      "covers": [
+        "cmd.init"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "init-reinit",
+      "covers": [
+        "cmd.init"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "init-directory",
+      "covers": [
+        "cmd.init"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
     {
       "name": "init-initial-branch-option",
       "covers": [
@@ -18,6 +170,421 @@
       "objectsByteIdentical": "0/0"
     },
     {
+      "name": "init-bad-option",
+      "covers": [
+        "cmd.init",
+        "cli.exit-codes"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": null,
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "hash-object",
+      "covers": [
+        "cmd.hash-object",
+        "odb.loose-write",
+        "odb.hash"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/2"
+    },
+    {
+      "name": "hash-object-outside-repo",
+      "covers": [
+        "cmd.hash-object",
+        "odb.hash"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": null,
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "cat-file",
+      "covers": [
+        "cmd.cat-file",
+        "odb.loose-read",
+        "odb.tree-format",
+        "odb.commit-format"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "tree-ordering",
+      "covers": [
+        "odb.tree-format",
+        "cmd.write-tree",
+        "index.sort"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "8/10"
+    },
+    {
+      "name": "add-basic",
+      "covers": [
+        "cmd.add",
+        "index.format-v2",
+        "index.sort"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/3"
+    },
+    {
+      "name": "add-dot-and-update",
+      "covers": [
+        "cmd.add",
+        "index.format-v2"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/7"
+    },
+    {
+      "name": "add-nothing",
+      "covers": [
+        "cmd.add"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "add-unmatched",
+      "covers": [
+        "cmd.add",
+        "cli.exit-codes"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "add-lock-held",
+      "covers": [
+        "index.lockfile"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "add-ignored",
+      "covers": [
+        "cmd.add"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/2"
+    },
+    {
+      "name": "write-tree-empty",
+      "covers": [
+        "cmd.write-tree"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "1/1"
+    },
+    {
+      "name": "write-tree-nested",
+      "covers": [
+        "cmd.write-tree",
+        "odb.tree-format"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/6"
+    },
+    {
+      "name": "commit-initial",
+      "covers": [
+        "cmd.commit",
+        "odb.commit-format",
+        "refs.files"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "commit-second",
+      "covers": [
+        "cmd.commit",
+        "refs.files"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "commit-all-flag",
+      "covers": [
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/8"
+    },
+    {
+      "name": "commit-nothing",
+      "covers": [
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "commit-nothing-untracked",
+      "covers": [
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "commit-empty-repo",
+      "covers": [
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "1/1"
+    },
+    {
+      "name": "commit-empty-message",
+      "covers": [
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/2"
+    },
+    {
+      "name": "commit-message-cleanup",
+      "covers": [
+        "cmd.commit",
+        "odb.commit-format"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "commit-allow-empty",
+      "covers": [
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/6"
+    },
+    {
+      "name": "status-empty-repo",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "status-untracked-new",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "1/1"
+    },
+    {
+      "name": "status-clean",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "status-mixed",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/6"
+    },
+    {
+      "name": "status-staged-delete",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
       "name": "status-branch-other",
       "covers": [
         "cmd.status"
@@ -31,6 +598,141 @@
         "output": ""
       },
       "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "log-empty-repo",
+      "covers": [
+        "cmd.log"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "log-history",
+      "covers": [
+        "cmd.log"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/11"
+    },
+    {
+      "name": "diff-clean",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "diff-worktree",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "diff-cached",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/7"
+    },
+    {
+      "name": "diff-hunks",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "diff-no-newline",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "diff-commits",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "diff-empty-repo",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "1/1"
     },
     {
       "name": "branch-ops",
@@ -94,6 +796,265 @@
       "objectsByteIdentical": "0/0"
     },
     {
+      "name": "checkout-branches",
+      "covers": [
+        "cmd.checkout-switch",
+        "refs.files"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "switch-branches",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/9"
+    },
+    {
+      "name": "checkout-dirty-conflict",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "checkout-dirty-carry",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "checkout-file",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "checkout-removes-files",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/10"
+    },
+    {
+      "name": "merge-ff",
+      "covers": [
+        "cmd.merge-ff",
+        "refs.files"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/9"
+    },
+    {
+      "name": "merge-ff-only-diverged",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/11"
+    },
+    {
+      "name": "merge-bad-ref",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "merge-already-ancestor",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "cache-tree-order",
+      "covers": [
+        "cmd.write-tree",
+        "index.format-v2"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "12/14"
+    },
+    {
+      "name": "cat-file-missing-full-hex",
+      "covers": [
+        "cmd.cat-file"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "checkout-path-no-dashdash",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "checkout-untracked-overwrite",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "commit-unstaged-only",
+      "covers": [
+        "cmd.commit",
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "status-subdir-relative",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "merge-ff-dirty",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
       "name": "branch-rename-copy",
       "covers": [
         "cmd.branch"
@@ -107,6 +1068,163 @@
         "output": ""
       },
       "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "config-cmd",
+      "covers": [
+        "cmd.config"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "usage-texts",
+      "covers": [
+        "cli.exit-codes"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "detached-head",
+      "covers": [
+        "cmd.checkout-switch",
+        "cmd.status",
+        "cmd.branch",
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/11"
+    },
+    {
+      "name": "diff-move-lines",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/4"
+    },
+    {
+      "name": "ho-ignore-rules",
+      "covers": [
+        "cmd.status",
+        "cmd.add"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/6"
+    },
+    {
+      "name": "ho-log-range-path",
+      "covers": [
+        "cmd.log"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/11"
+    },
+    {
+      "name": "ho-diff-mixed",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "7/12"
+    },
+    {
+      "name": "ho-rename-staged",
+      "covers": [
+        "cmd.status",
+        "cmd.commit",
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "ho-amend",
+      "covers": [
+        "cmd.commit",
+        "cmd.log"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/10"
+    },
+    {
+      "name": "ho-commit-file-msg",
+      "covers": [
+        "cmd.commit"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "5/11"
     },
     {
       "name": "ho-branch-misc",
@@ -123,13 +1241,406 @@
         "output": ""
       },
       "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "ho-merge-ff-tree",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "6/11"
+    },
+    {
+      "name": "ho-add-variants",
+      "covers": [
+        "cmd.add"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "6/8"
+    },
+    {
+      "name": "ho-plumbing",
+      "covers": [
+        "cmd.hash-object",
+        "cmd.cat-file",
+        "cmd.write-tree"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "ho-untracked-layout",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "ho-diff-large",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "1/3"
+    },
+    {
+      "name": "ho-diff-code",
+      "covers": [
+        "cmd.diff"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "1/3"
+    },
+    {
+      "name": "ho-unicode-paths",
+      "covers": [
+        "cmd.status",
+        "cmd.diff",
+        "cmd.add"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/4"
+    },
+    {
+      "name": "ho-checkout-commit-files",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "ho-errors",
+      "covers": [
+        "cli.exit-codes",
+        "cmd.commit",
+        "cmd.branch",
+        "cmd.log",
+        "cmd.cat-file"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "net-clone-basic",
+      "covers": [
+        "net.clone"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "net-clone-variants",
+      "covers": [
+        "net.clone"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 3,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "net-checkout-remote-branch",
+      "covers": [
+        "net.clone",
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "net-fetch",
+      "covers": [
+        "net.fetch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/6"
+    },
+    {
+      "name": "net-push",
+      "covers": [
+        "net.push"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/6"
+    },
+    {
+      "name": "net-push-rejected",
+      "covers": [
+        "net.push"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/6"
+    },
+    {
+      "name": "net-push-auth",
+      "covers": [
+        "net.push",
+        "net.auth"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "1/3"
+    },
+    {
+      "name": "net-pull",
+      "covers": [
+        "net.pull"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/8"
+    },
+    {
+      "name": "net-pull-refused",
+      "covers": [
+        "net.pull"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/6"
+    },
+    {
+      "name": "net-ssh",
+      "covers": [
+        "net.ssh",
+        "net.clone",
+        "net.push",
+        "net.fetch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 2,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/6"
+    },
+    {
+      "name": "net-ho-tags-prune",
+      "covers": [
+        "net.fetch",
+        "net.clone"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/1"
+    },
+    {
+      "name": "net-ho-remote-add-upstream",
+      "covers": [
+        "net.push",
+        "net.remote"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "net-ho-big-and-merge",
+      "covers": [
+        "net.fetch",
+        "net.clone"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "net-ho-local-clone",
+      "covers": [
+        "net.clone",
+        "net.push"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 2,
+        "output": ""
+      },
+      "objectsByteIdentical": "8/12"
+    },
+    {
+      "name": "net-ho-pull-ssh",
+      "covers": [
+        "net.pull",
+        "net.ssh"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/12"
+    },
+    {
+      "name": "net-push-new-repo",
+      "covers": [
+        "net.push"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 2,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
     }
   ],
   "summary": {
-    "scenarios": 8,
-    "passed": 8,
-    "steps": "74/74",
-    "objects_byte_identical": "19/34",
-    "fsck_clean": "8/8"
+    "scenarios": 107,
+    "passed": 107,
+    "steps": "779/779",
+    "objects_byte_identical": "287/509",
+    "fsck_clean": "101/101"
   }
 }

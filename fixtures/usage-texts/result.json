@@ -76,6 +76,16 @@
     },
     {
       "git": [
+        "config",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git config list [<file-option>] [<display-option>] [--includes]\n   or: git config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp] [--value=<pattern>] [--fixed-value] [--default=<default>] [--url=<url>] <name>\n   or: git config set [<file-option>] [--type=<type>] [--all] [--value=<pattern>] [--fixed-value] <name> <value>\n   or: git config unset [<file-option>] [--all] [--value=<pattern>] [--fixed-value] <name>\n   or: git config rename-section [<file-option>] <old-name> <new-name>\n   or: git config remove-section [<file-option>] <name>\n   or: git config edit [<file-option>]\n   or: git config [<file-option>] --get-colorbool <name> [<stdout-is-tty>]\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
         "diff",
         "-h"
       ],
