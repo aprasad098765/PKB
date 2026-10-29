@@ -1,0 +1,491 @@
+{
+  "bindings": [
+    {
+      "obligation_id": "cli.dispatch",
+      "owner": {
+        "module_path": "src/cli.ts",
+        "symbol": "main",
+        "owner_sha256": "bf4a99a98408f5057e818fb4a1986b4e68e8f69b59d6b539541a172ce079dfe8"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_0a845de6bf63ddf7d1625fd9d1f78470079bc964e822c979cfab1506b0d09cb7",
+          "location": "0x14032e000 / FUN_140001480"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cli.worktree-required",
+      "owner": {
+        "module_path": "src/cli.ts",
+        "symbol": "main",
+        "owner_sha256": "bf4a99a98408f5057e818fb4a1986b4e68e8f69b59d6b539541a172ce079dfe8"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_0a845de6bf63ddf7d1625fd9d1f78470079bc964e822c979cfab1506b0d09cb7",
+          "location": "FUN_140282190"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cli.exit-codes",
+      "owner": {
+        "module_path": "src/output.ts",
+        "symbol": "die",
+        "owner_sha256": "e35a6566532edb49e17cee008cbd9fa5ddcf4ada6e7b4b8037c3f06f656bb98c"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_0a845de6bf63ddf7d1625fd9d1f78470079bc964e822c979cfab1506b0d09cb7",
+          "location": "FUN_1402c4300 / FUN_1402c45d0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cli.not-a-repo",
+      "owner": {
+        "module_path": "src/repo.ts",
+        "symbol": "requireRepo",
+        "owner_sha256": "636ef76ca610d9340cea154d882c577b870d63e2adf88a209d8734943b246ee1"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_0a845de6bf63ddf7d1625fd9d1f78470079bc964e822c979cfab1506b0d09cb7",
+          "location": "FUN_140284380"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cli.unknown-command",
+      "owner": {
+        "module_path": "src/cli.ts",
+        "symbol": "unknownCommand",
+        "owner_sha256": "bf4a99a98408f5057e818fb4a1986b4e68e8f69b59d6b539541a172ce079dfe8"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_0a845de6bf63ddf7d1625fd9d1f78470079bc964e822c979cfab1506b0d09cb7",
+          "location": "FUN_14019f280"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "repo.discovery",
+      "owner": {
+        "module_path": "src/repo.ts",
+        "symbol": "discover",
+        "owner_sha256": "636ef76ca610d9340cea154d882c577b870d63e2adf88a209d8734943b246ee1"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_0a845de6bf63ddf7d1625fd9d1f78470079bc964e822c979cfab1506b0d09cb7",
+          "location": "FUN_140284380 / FUN_140282bf0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "odb.loose-write",
+      "owner": {
+        "module_path": "src/odb.ts",
+        "symbol": "ObjectDB.write",
+        "owner_sha256": "41e76e53cff34fbf7384841fbad309d47a45ce941d6c4ebdf40e570cf41ccefc"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_012280717e24a1f8c6acfa4e6d65f9898afff096b85448250fe78831c736318c",
+          "location": "0x1401d0d40 / 0x1401d2220 / 0x1401d2f50"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "odb.loose-read",
+      "owner": {
+        "module_path": "src/odb.ts",
+        "symbol": "ObjectDB.read",
+        "owner_sha256": "41e76e53cff34fbf7384841fbad309d47a45ce941d6c4ebdf40e570cf41ccefc"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_66649505ae24fb680d72cdc0940e545e48ee35972508447a2ea90c5a21cd7abb",
+          "location": "0x1401d4aa0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "odb.hash",
+      "owner": {
+        "module_path": "src/odb.ts",
+        "symbol": "hashObject",
+        "owner_sha256": "41e76e53cff34fbf7384841fbad309d47a45ce941d6c4ebdf40e570cf41ccefc"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_c6b66597c118c83c5e8d55278ba3ebbd0fa74ced1bb2803679e7c4e77f74700c",
+          "location": "0x1403d86c0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "odb.tree-format",
+      "owner": {
+        "module_path": "src/objects.ts",
+        "symbol": "serializeTree",
+        "owner_sha256": "cce283102417d7a7fee3832f38fb563fba8b9495461276f2b9a5d3ced8ee49fe"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_8d27ca69f02fc24d469b91cc842ebb225f776006eb3206fb448c465c14fb7bec",
+          "location": "0x14018f260 (fsck) / cache-tree"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "odb.commit-format",
+      "owner": {
+        "module_path": "src/objects.ts",
+        "symbol": "serializeCommit",
+        "owner_sha256": "cce283102417d7a7fee3832f38fb563fba8b9495461276f2b9a5d3ced8ee49fe"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_a00e5f597a795530c41b06d3425324db257027952a7c886acf23029958c3bef6",
+          "location": "0x140138f90"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.hash-object",
+      "owner": {
+        "module_path": "src/commands/hash-object.ts",
+        "symbol": "cmdHashObject",
+        "owner_sha256": "9d7df2229971b3003e7f52df5c9d676366d3fbdbbfb60ef985eb5c15347e3487"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_39c09b4a5c41f693bd6e23bee2d470d16119d445b53c27a5fe06ff81d138685a",
+          "location": "0x14006c780"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.cat-file",
+      "owner": {
+        "module_path": "src/commands/cat-file.ts",
+        "symbol": "cmdCatFile",
+        "owner_sha256": "ed2ad5d394e48e9b70a2b655b14e332537dbb245aa2caa4f2d15a3028bb3bb8d"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_39c09b4a5c41f693bd6e23bee2d470d16119d445b53c27a5fe06ff81d138685a",
+          "location": "0x14001a690"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "index.format-v2",
+      "owner": {
+        "module_path": "src/dircache.ts",
+        "symbol": "Index.serialize",
+        "owner_sha256": "d8d18af65dbcfbdde7b6b0976f151832e70f3f5d47ccf74981f5ca1a266d2967"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_ea2d8d1f7a3bd305416ba967b3a1ad0f14ade4c00586f82a7de5894f2bfedfcd",
+          "location": "FUN_1402132a0 / FUN_1402135d0 / FUN_140213fb0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "index.lockfile",
+      "owner": {
+        "module_path": "src/dircache.ts",
+        "symbol": "Index.lock",
+        "owner_sha256": "d8d18af65dbcfbdde7b6b0976f151832e70f3f5d47ccf74981f5ca1a266d2967"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_8985cfc41a1b0e2cac2c0242041f9b46834b36db1974a723a7177de657dbf2d0",
+          "location": "FUN_1401acf60"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "index.sort",
+      "owner": {
+        "module_path": "src/dircache.ts",
+        "symbol": "cmpEntry",
+        "owner_sha256": "d8d18af65dbcfbdde7b6b0976f151832e70f3f5d47ccf74981f5ca1a266d2967"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_f4d65a7a6de01308167eab7aef9afbef77d1132a1876ab88b687909a06c7cc55",
+          "location": "index compare"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.add",
+      "owner": {
+        "module_path": "src/commands/add.ts",
+        "symbol": "cmdAdd",
+        "owner_sha256": "cef9d663b9856c63a0d55651bb52c723432496486c48270ca3ab18174e008393"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_5876273648f59652ae02de9a18630be419f0cbe6d898298bfe7e1f38f4be1af4",
+          "location": "0x1400039a0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.status",
+      "owner": {
+        "module_path": "src/commands/status.ts",
+        "symbol": "cmdStatus",
+        "owner_sha256": "a893521609a6958922895bb9384cfc683fa5d55165bdcbeafa7920e237e35824"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_b42a7edfaae5cf6bf21f1cb5d5c2198b62ea0d7448c9ce22fd88cebc77b2bf8b",
+          "location": "FUN_1402d3dc0 / FUN_1402d1300"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.write-tree",
+      "owner": {
+        "module_path": "src/commands/write-tree.ts",
+        "symbol": "cmdWriteTree",
+        "owner_sha256": "a37e08178822f10a8013f9eebe1df6cd47786137b4d44641e9ace370d2bd7f3b"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_8d27ca69f02fc24d469b91cc842ebb225f776006eb3206fb448c465c14fb7bec",
+          "location": "0x1400fb5a0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.init",
+      "owner": {
+        "module_path": "src/commands/init.ts",
+        "symbol": "cmdInit",
+        "owner_sha256": "e0c8a7d720a328888bb1a93bf818bbaa8fb2eeb8381940ceec055c56f48dacbb"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_b3c4b65a057446405a22f176445461d723a9415548931b5507689173ad8b5135",
+          "location": "FUN_1402856d0 / FUN_140285510 / FUN_140226970"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "refs.files",
+      "owner": {
+        "module_path": "src/refs.ts",
+        "symbol": "updateRef",
+        "owner_sha256": "60f93eccbe1914fbe5a0da497939e28e69180e1fe463e8229a14e6ea70ef6c1d"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_24d2b3e0ae3af6788b6e26587200098ecdb0c3e1f69798c8aa1467e1557e15c6",
+          "location": "FUN_140230490"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.commit",
+      "owner": {
+        "module_path": "src/commands/commit.ts",
+        "symbol": "cmdCommit",
+        "owner_sha256": "26aff0273f9fc36883e40ed2cf29fc53405ab0a21c624224f7df9f3eb983478c"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_17cf7d23fc7a0951e516b3b28a5ee6d9f7d61c6e3a0c4a00d3ab079362911796",
+          "location": "0x14002ff50"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.branch",
+      "owner": {
+        "module_path": "src/commands/branch.ts",
+        "symbol": "cmdBranch",
+        "owner_sha256": "9f105e2b23d51b83124e3b381dec58edd0b4d865b9477f43accba00972a1150f"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_b3c4b65a057446405a22f176445461d723a9415548931b5507689173ad8b5135",
+          "location": "0x140014c00"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.checkout-switch",
+      "owner": {
+        "module_path": "src/commands/checkout.ts",
+        "symbol": "cmdCheckout",
+        "owner_sha256": "e8b5b4fd2664d1c9738089e88ae2f89f0f8eef81242c515c8954da6cf88b2c66"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_b3c4b65a057446405a22f176445461d723a9415548931b5507689173ad8b5135",
+          "location": "0x140024090 / 0x1400243b0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.merge-ff",
+      "owner": {
+        "module_path": "src/commands/merge.ts",
+        "symbol": "cmdMerge",
+        "owner_sha256": "56dac985fc9d635567297e480c64f1226135c2170ea03c85a3695810460df5cd"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_ba6025cc593047ecdf03750d98068bde7c26f42406dd2e00a2cb6dcb1a8407a3",
+          "location": "0x1400897e0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.log",
+      "owner": {
+        "module_path": "src/commands/log.ts",
+        "symbol": "cmdLog",
+        "owner_sha256": "ffa23e068d29eda5592c00ebc58d38ae22948b8d12fc6ef50b1b14daab89febd"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_73a1f71916f87e69c2beca5213485167b5e6dbc60707b6cc09ae046e2a96340f",
+          "location": "0x140079af0"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    },
+    {
+      "obligation_id": "cmd.diff",
+      "owner": {
+        "module_path": "src/commands/diff.ts",
+        "symbol": "cmdDiff",
+        "owner_sha256": "f68cc5d9fc11b2d8abf0b7355e3a88b23ab8c10330a37776d800394eb9f57959"
+      },
+      "parser_type": null,
+      "original_cases": [
+        {
+          "kind": "positive",
+          "evidence_id": "ev_90594d5066e6f0f4a9e13ff81b55be2a50c263349f36151c9b44dad719d94c5c",
+          "location": "0x14003f850"
+        }
+      ],
+      "fixtures": [],
+      "verifier": null
+    }
+  ],
+  "contradictions": []
+}

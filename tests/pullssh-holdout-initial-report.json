@@ -1,0 +1,31 @@
+{
+  "generated": "2026-10-29T07:25:33.593Z",
+  "impl": "node src/cli.ts",
+  "scenarios": [
+    {
+      "name": "net-ho-pull-ssh",
+      "covers": [
+        "net.pull",
+        "net.ssh"
+      ],
+      "ok": false,
+      "stepDiffs": [],
+      "snapshotDiffs": [
+        "content c/.pkb/ORIG_HEAD differs"
+      ],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/12"
+    }
+  ],
+  "summary": {
+    "scenarios": 1,
+    "passed": 0,
+    "steps": "14/14",
+    "objects_byte_identical": "4/12",
+    "fsck_clean": "1/1"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "pkb",
+  "version": "0.1.0",
+  "description": "pkb: a git-format-compatible version control tool (git v1 command subset), reconstructed from REA evidence of git.exe 2.52.0.windows.1 and black-box fixtures",
+  "type": "module",
+  "license": "GPL-2.0-only",
+  "engines": { "node": ">=23.6" },
+  "bin": { "pkb": "bin/pkb.mjs" },
+  "scripts": {
+    "test": "node harness/parity.mjs && node tests/interop.mjs",
+    "parity": "node harness/parity.mjs",
+    "interop": "node tests/interop.mjs",
+    "capture": "node harness/capture-fixtures.mjs && node harness/transcript.mjs",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "typescript": "5.6.3"
+  }
+}

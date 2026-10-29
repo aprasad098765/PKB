@@ -1,0 +1,10 @@
+import { readFileSync, readdirSync, mkdirSync, rmSync } from "node:fs";
+import { parsePack, storePack } from "../../src/pack.ts";
+const d = "D:/Petalkube/Grind/Test/REA/GIT-rea/fixtures/net-clone-basic/dotgit/objects/pack/";
+const f = readdirSync(d).find((x) => x.endsWith(".pack"))!;
+const pack = readFileSync(d + f);
+const out = process.env.TEMP + "/pkout"; rmSync(out, { recursive: true, force: true }); mkdirSync(out);
+const e = parsePack(pack, null);
+const name = storePack(out, pack, e);
+for (const ext of [".idx", ".rev"]) console.log(ext, readFileSync(out + "/pack/" + name + ext).equals(readFileSync(d + f.replace(".pack", ext))));
+console.log(e.length, "objects", e.map((x) => x.type).join(","));

@@ -1,0 +1,367 @@
+{
+  "name": "write-tree-nested",
+  "covers": [
+    "cmd.write-tree",
+    "odb.tree-format"
+  ],
+  "steps": [
+    {
+      "git": [
+        "init",
+        "-q"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "write": "top"
+    },
+    {
+      "write": "d1/d2/leaf"
+    },
+    {
+      "write": "d1/f"
+    },
+    {
+      "git": [
+        "add",
+        "."
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "write-tree"
+      ],
+      "cwd": ".",
+      "stdout": "5405c5bb49f8591e566f727510c983bacb9f60e7\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "cat-file",
+        "-p",
+        "HEAD"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "fatal: Not a valid object name HEAD\n",
+      "exit": 128
+    },
+    {
+      "git": [
+        "write-tree",
+        "--bogus"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "error: unknown option `bogus'\nusage: git write-tree [--missing-ok] [--prefix=<prefix>/]\n\n    --[no-]missing-ok     allow missing objects\n    --[no-]prefix <prefix>/\n                          write tree object for a subdirectory <prefix>\n\n",
+      "exit": 129
+    }
+  ],
+  "snapshot": [
+    {
+      "path": ".git/",
+      "dir": true
+    },
+    {
+      "path": ".git/HEAD",
+      "size": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "text": "ref: refs/heads/master\n"
+    },
+    {
+      "path": ".git/config",
+      "size": 130,
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc",
+      "text": "[core]\n\trepositoryformatversion = 0\n\tfilemode = false\n\tbare = false\n\tlogallrefupdates = true\n\tsymlinks = false\n\tignorecase = true\n"
+    },
+    {
+      "path": ".git/description",
+      "size": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+      "text": "Unnamed repository; edit this file 'description' to name the repository.\n"
+    },
+    {
+      "path": ".git/hooks/",
+      "dir": true
+    },
+    {
+      "path": ".git/hooks/applypatch-msg.sample",
+      "size": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "path": ".git/hooks/commit-msg.sample",
+      "size": 896,
+      "sha256": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437"
+    },
+    {
+      "path": ".git/hooks/fsmonitor-watchman.sample",
+      "size": 4726,
+      "sha256": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0"
+    },
+    {
+      "path": ".git/hooks/post-update.sample",
+      "size": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "path": ".git/hooks/pre-applypatch.sample",
+      "size": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "path": ".git/hooks/pre-commit.sample",
+      "size": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "path": ".git/hooks/pre-merge-commit.sample",
+      "size": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "path": ".git/hooks/pre-push.sample",
+      "size": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "path": ".git/hooks/pre-rebase.sample",
+      "size": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "path": ".git/hooks/pre-receive.sample",
+      "size": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "path": ".git/hooks/prepare-commit-msg.sample",
+      "size": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "path": ".git/hooks/push-to-checkout.sample",
+      "size": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "path": ".git/hooks/sendemail-validate.sample",
+      "size": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "path": ".git/hooks/update.sample",
+      "size": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "path": ".git/index",
+      "size": 343,
+      "sha256": "5a44fad60764aa12b7b55dd5c7a85025a5b516ccf1565b166abc081162ad9b32",
+      "index": {
+        "version": 2,
+        "count": 3,
+        "entries": [
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "1f9d725a9de833a65966881dce2e907b86e72c5e",
+            "stage": 0,
+            "flags_namelen": 10,
+            "path": "d1/d2/leaf"
+          },
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "6a69f92020f5df77af6e8813ff1232493383b708",
+            "stage": 0,
+            "flags_namelen": 4,
+            "path": "d1/f"
+          },
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "718f4d2ff533cf8ead8d3556cf43912bd245fbc4",
+            "stage": 0,
+            "flags_namelen": 3,
+            "path": "top"
+          }
+        ],
+        "extensions": [
+          {
+            "sig": "TREE",
+            "len": 79,
+            "data_hex": "003320310a5405c5bb49f8591e566f727510c983bacb9f60e76431003220310af75c51890aafeaae487863b9cca9a324cbf69a006432003120300ae368119d7fa830b619512fb61d6581c02cf4f41f"
+          }
+        ],
+        "trailer_ok": true
+      }
+    },
+    {
+      "path": ".git/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/info/exclude",
+      "size": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+      "text": "# git ls-files --others --exclude-from=.git/info/exclude\n# Lines that start with '#' are comments.\n# For a project mostly in C, the following would be a good set of\n# exclude patterns (uncomment them if you want to use them):\n# *.[oa]\n# *~\n"
+    },
+    {
+      "path": ".git/objects/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/1f/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/1f/9d725a9de833a65966881dce2e907b86e72c5e",
+      "size": 17,
+      "sha256": "5129033dc1d2fdd26cd1057aa1253fcceab9c2dd36ed166008f42272c380387f",
+      "object": {
+        "header": "blob 2",
+        "oid": "1f9d725a9de833a65966881dce2e907b86e72c5e",
+        "content": "l\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/54/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/54/05c5bb49f8591e566f727510c983bacb9f60e7",
+      "size": 77,
+      "sha256": "9f4304ece0cda154ec6ca90427afe335b2cc363f89c8cddcbc49709168fdc0f3",
+      "object": {
+        "header": "tree 60",
+        "oid": "5405c5bb49f8591e566f727510c983bacb9f60e7",
+        "content": [
+          "40000 d1 f75c51890aafeaae487863b9cca9a324cbf69a00",
+          "100644 top 718f4d2ff533cf8ead8d3556cf43912bd245fbc4"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/6a/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/6a/69f92020f5df77af6e8813ff1232493383b708",
+      "size": 17,
+      "sha256": "981a9f354ed4542b9200f167c8184eb4ad2603e14ece70b55dcfe02bf0dcc724",
+      "object": {
+        "header": "blob 2",
+        "oid": "6a69f92020f5df77af6e8813ff1232493383b708",
+        "content": "f\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/71/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/71/8f4d2ff533cf8ead8d3556cf43912bd245fbc4",
+      "size": 17,
+      "sha256": "491638ff0f5e9b6c6a7cfbe53584532a8b6a9d5d5eb301e11d9730d93a8958a2",
+      "object": {
+        "header": "blob 2",
+        "oid": "718f4d2ff533cf8ead8d3556cf43912bd245fbc4",
+        "content": "t\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/e3/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/e3/68119d7fa830b619512fb61d6581c02cf4f41f",
+      "size": 49,
+      "sha256": "15ef1a01a269d8608c1e6e370217e287f72d0153d0af78ce00c539fbe05634ec",
+      "object": {
+        "header": "tree 32",
+        "oid": "e368119d7fa830b619512fb61d6581c02cf4f41f",
+        "content": [
+          "100644 leaf 1f9d725a9de833a65966881dce2e907b86e72c5e"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/f7/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/f7/5c51890aafeaae487863b9cca9a324cbf69a00",
+      "size": 74,
+      "sha256": "7007184931814bf05405fe06f4ae637a734643f8031d2f5412e4fd2add4edc81",
+      "object": {
+        "header": "tree 58",
+        "oid": "f75c51890aafeaae487863b9cca9a324cbf69a00",
+        "content": [
+          "40000 d2 e368119d7fa830b619512fb61d6581c02cf4f41f",
+          "100644 f 6a69f92020f5df77af6e8813ff1232493383b708"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/pack/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/tags/",
+      "dir": true
+    },
+    {
+      "path": "d1/",
+      "dir": true
+    },
+    {
+      "path": "d1/d2/",
+      "dir": true
+    },
+    {
+      "path": "d1/d2/leaf",
+      "size": 2,
+      "sha256": "6d7ebc44c5bc26207e62f4f628f912e1a0f41ed11764891aa7dd99eab83228e7",
+      "text": "l\n"
+    },
+    {
+      "path": "d1/f",
+      "size": 2,
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "text": "f\n"
+    },
+    {
+      "path": "top",
+      "size": 2,
+      "sha256": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+      "text": "t\n"
+    }
+  ]
+}

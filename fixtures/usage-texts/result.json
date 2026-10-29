@@ -1,0 +1,360 @@
+{
+  "name": "usage-texts",
+  "covers": [
+    "cli.exit-codes"
+  ],
+  "steps": [
+    {
+      "git": [
+        "init",
+        "-q"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "add",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git add [<options>] [--] <pathspec>...\n\n    -n, --[no-]dry-run    dry run\n    -v, --[no-]verbose    be verbose\n\n    -i, --[no-]interactive\n                          interactive picking\n    -p, --[no-]patch      select hunks interactively\n    -U, --unified <n>     generate diffs with <n> lines context\n    --inter-hunk-context <n>\n                          show context between diff hunks up to the specified number of lines\n    -e, --[no-]edit       edit current diff and apply\n    -f, --[no-]force      allow adding otherwise ignored files\n    -u, --[no-]update     update tracked files\n    --[no-]renormalize    renormalize EOL of tracked files (implies -u)\n    -N, --[no-]intent-to-add\n                          record only the fact that the path will be added later\n    -A, --[no-]all        add changes from all tracked and untracked files\n    --[no-]ignore-removal ignore paths removed in the working tree (same as --no-all)\n    --[no-]refresh        don't add, only refresh the index\n    --[no-]ignore-errors  just skip files which cannot be added because of errors\n    --[no-]ignore-missing check if - even missing - files are ignored in dry run\n    --[no-]sparse         allow updating entries outside of the sparse-checkout cone\n    --[no-]chmod (+|-)x   override the executable bit of the listed files\n    --[no-]pathspec-from-file <file>\n                          read pathspec from file\n    --[no-]pathspec-file-nul\n                          with --pathspec-from-file, pathspec elements are separated with NUL character\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "branch",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git branch [<options>] [-r | -a] [--merged] [--no-merged]\n   or: git branch [<options>] [-f] [--recurse-submodules] <branch-name> [<start-point>]\n   or: git branch [<options>] [-l] [<pattern>...]\n   or: git branch [<options>] [-r] (-d | -D) <branch-name>...\n   or: git branch [<options>] (-m | -M) [<old-branch>] <new-branch>\n   or: git branch [<options>] (-c | -C) [<old-branch>] <new-branch>\n   or: git branch [<options>] [-r | -a] [--points-at]\n   or: git branch [<options>] [-r | -a] [--format]\n\nGeneric options\n    -v, --[no-]verbose    show hash and subject, give twice for upstream branch\n    -q, --[no-]quiet      suppress informational messages\n    -t, --[no-]track[=(direct|inherit)]\n                          set branch tracking configuration\n    -u, --[no-]set-upstream-to <upstream>\n                          change the upstream info\n    --[no-]unset-upstream unset the upstream info\n    --[no-]color[=<when>] use colored output\n    -r, --remotes         act on remote-tracking branches\n    --contains <commit>   print only branches that contain the commit\n    --no-contains <commit>\n                          print only branches that don't contain the commit\n    --[no-]abbrev[=<n>]   use <n> digits to display object names\n\nSpecific git-branch actions:\n    -a, --all             list both remote-tracking and local branches\n    -d, --[no-]delete     delete fully merged branch\n    -D                    delete branch (even if not merged)\n    -m, --[no-]move       move/rename a branch and its reflog\n    -M                    move/rename a branch, even if target exists\n    --[no-]omit-empty     do not output a newline after empty formatted refs\n    -c, --[no-]copy       copy a branch and its reflog\n    -C                    copy a branch, even if target exists\n    -l, --[no-]list       list branch names\n    --[no-]show-current   show current branch name\n    --[no-]create-reflog  create the branch's reflog\n    --[no-]edit-description\n                          edit the description for the branch\n    -f, --[no-]force      force creation, move/rename, deletion\n    --merged <commit>     print only branches that are merged\n    --no-merged <commit>  print only branches that are not merged\n    --[no-]column[=<style>]\n                          list branches in columns\n    --[no-]sort <key>     field name to sort on\n    --[no-]points-at <object>\n                          print only branches of the object\n    -i, --[no-]ignore-case\n                          sorting and filtering are case insensitive\n    --[no-]recurse-submodules\n                          recurse through submodules\n    --[no-]format <format>\n                          format to use for the output\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "cat-file",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git cat-file <type> <object>\n   or: git cat-file (-e | -p | -t | -s) <object>\n   or: git cat-file (--textconv | --filters)\n                    [<rev>:<path|tree-ish> | --path=<path|tree-ish> <rev>]\n   or: git cat-file (--batch | --batch-check | --batch-command) [--batch-all-objects]\n                    [--buffer] [--follow-symlinks] [--unordered]\n                    [--textconv | --filters] [-Z]\n\nCheck object existence or emit object contents\n    -e                    check if <object> exists\n    -p                    pretty-print <object> content\n\nEmit [broken] object attributes\n    -t                    show object type (one of 'blob', 'tree', 'commit', 'tag', ...)\n    -s                    show object size\n    --[no-]use-mailmap    use mail map file\n    --[no-]mailmap        alias of --use-mailmap\n\nBatch objects requested on stdin (or --batch-all-objects)\n    --batch[=<format>]    show full <object> or <rev> contents\n    --batch-check[=<format>]\n                          like --batch, but don't emit <contents>\n    -Z                    stdin and stdout is NUL-terminated\n    --batch-command[=<format>]\n                          read commands from stdin\n    --batch-all-objects   with --batch[-check]: ignores stdin, batches all known objects\n\nChange or optimize batch output\n    --[no-]buffer         buffer --batch output\n    --[no-]follow-symlinks\n                          follow in-tree symlinks\n    --[no-]unordered      do not order objects before emitting them\n\nEmit object (blob or tree) with conversion or filter (stand-alone, or with batch)\n    --textconv            run textconv on object's content\n    --filters             run filters on object's content\n    --[no-]path blob|tree use a <path> for (--textconv | --filters); Not with 'batch'\n    --[no-]filter <args>  object filtering\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "checkout",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git checkout [<options>] <branch>\n   or: git checkout [<options>] [<branch>] -- <file>...\n\n    -b <branch>           create and checkout a new branch\n    -B <branch>           create/reset and checkout a branch\n    -l                    create reflog for new branch\n    --[no-]guess          second guess 'git checkout <no-such-branch>' (default)\n    --[no-]overlay        use overlay mode (default)\n    -q, --[no-]quiet      suppress progress reporting\n    --[no-]recurse-submodules[=<checkout>]\n                          control recursive updating of submodules\n    --[no-]progress       force progress reporting\n    -m, --[no-]merge      perform a 3-way merge with the new branch\n    --[no-]conflict <style>\n                          conflict style (merge, diff3, or zdiff3)\n    -d, --[no-]detach     detach HEAD at named commit\n    -t, --[no-]track[=(direct|inherit)]\n                          set branch tracking configuration\n    -f, --[no-]force      force checkout (throw away local modifications)\n    --[no-]orphan <new-branch>\n                          new unborn branch\n    --[no-]overwrite-ignore\n                          update ignored files (default)\n    --[no-]ignore-other-worktrees\n                          do not check if another worktree is using this branch\n    -2, --ours            checkout our version for unmerged files\n    -3, --theirs          checkout their version for unmerged files\n    -p, --[no-]patch      select hunks interactively\n    -U, --unified <n>     generate diffs with <n> lines context\n    --inter-hunk-context <n>\n                          show context between diff hunks up to the specified number of lines\n    --[no-]ignore-skip-worktree-bits\n                          do not limit pathspecs to sparse entries only\n    --[no-]pathspec-from-file <file>\n                          read pathspec from file\n    --[no-]pathspec-file-nul\n                          with --pathspec-from-file, pathspec elements are separated with NUL character\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "clone",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git clone [<options>] [--] <repo> [<dir>]\n\n    -v, --[no-]verbose    be more verbose\n    -q, --[no-]quiet      be more quiet\n    --[no-]progress       force progress reporting\n    --[no-]reject-shallow don't clone shallow repository\n    -n, --no-checkout     don't create a checkout\n    --checkout            opposite of --no-checkout\n    --[no-]bare           create a bare repository\n    --[no-]mirror         create a mirror repository (implies --bare)\n    -l, --[no-]local      to clone from a local repository\n    --no-hardlinks        don't use local hardlinks, always copy\n    --hardlinks           opposite of --no-hardlinks\n    -s, --[no-]shared     setup as shared repository\n    --[no-]recurse-submodules[=<pathspec>]\n                          initialize submodules in the clone\n    --[no-]recursive[=<pathspec>]\n                          alias of --recurse-submodules\n    -j, --[no-]jobs <n>   number of submodules cloned in parallel\n    --[no-]template <template-directory>\n                          directory from which templates will be used\n    --[no-]reference <repo>\n                          reference repository\n    --[no-]reference-if-able <repo>\n                          reference repository\n    --[no-]dissociate     use --reference only while cloning\n    -o, --[no-]origin <name>\n                          use <name> instead of 'origin' to track upstream\n    -b, --[no-]branch <branch>\n                          checkout <branch> instead of the remote's HEAD\n    --[no-]revision <rev> clone single revision <rev> and check out\n    -u, --[no-]upload-pack <path>\n                          path to git-upload-pack on the remote\n    --[no-]depth <depth>  create a shallow clone of that depth\n    --[no-]shallow-since <time>\n                          create a shallow clone since a specific time\n    --[no-]shallow-exclude <ref>\n                          deepen history of shallow clone, excluding ref\n    --[no-]single-branch  clone only one branch, HEAD or --branch\n    --[no-]tags           clone tags, and make later fetches not to follow them\n    --[no-]shallow-submodules\n                          any cloned submodules will be shallow\n    --[no-]separate-git-dir <gitdir>\n                          separate git dir from working tree\n    --[no-]ref-format <format>\n                          specify the reference format to use\n    -c, --[no-]config <key=value>\n                          set config inside the new repository\n    --[no-]server-option <server-specific>\n                          option to transmit\n    -4, --ipv4            use IPv4 addresses only\n    -6, --ipv6            use IPv6 addresses only\n    --[no-]filter <args>  object filtering\n    --[no-]also-filter-submodules\n                          apply partial clone filters to submodules\n    --[no-]remote-submodules\n                          any cloned submodules will use their remote-tracking branch\n    --[no-]sparse         initialize sparse-checkout file to include only files at root\n    --[no-]bundle-uri <uri>\n                          a URI for downloading bundles before fetching from origin remote\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "commit",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git commit [-a | --interactive | --patch] [-s] [-v] [-u[<mode>]] [--amend]\n                  [--dry-run] [(-c | -C | --squash) <commit> | --fixup [(amend|reword):]<commit>]\n                  [-F <file> | -m <msg>] [--reset-author] [--allow-empty]\n                  [--allow-empty-message] [--no-verify] [-e] [--author=<author>]\n                  [--date=<date>] [--cleanup=<mode>] [--[no-]status]\n                  [-i | -o] [--pathspec-from-file=<file> [--pathspec-file-nul]]\n                  [(--trailer <token>[(=|:)<value>])...] [-S[<keyid>]]\n                  [--] [<pathspec>...]\n\n    -q, --[no-]quiet      suppress summary after successful commit\n    -v, --[no-]verbose    show diff in commit message template\n\nCommit message options\n    -F, --[no-]file <file>\n                          read message from file\n    --[no-]author <author>\n                          override author for commit\n    --[no-]date <date>    override date for commit\n    -m, --[no-]message <message>\n                          commit message\n    -c, --[no-]reedit-message <commit>\n                          reuse and edit message from specified commit\n    -C, --[no-]reuse-message <commit>\n                          reuse message from specified commit\n    --[no-]fixup [(amend|reword):]commit\n                          use autosquash formatted message to fixup or amend/reword specified commit\n    --[no-]squash <commit>\n                          use autosquash formatted message to squash specified commit\n    --[no-]reset-author   the commit is authored by me now (used with -C/-c/--amend)\n    --trailer <trailer>   add custom trailer(s)\n    -s, --[no-]signoff    add a Signed-off-by trailer\n    -t, --[no-]template <file>\n                          use specified template file\n    -e, --[no-]edit       force edit of commit\n    --[no-]cleanup <mode> how to strip spaces and #comments from message\n    --[no-]status         include status in commit message template\n    -S, --[no-]gpg-sign[=<key-id>]\n                          GPG sign commit\n\nCommit contents options\n    -a, --[no-]all        commit all changed files\n    -i, --[no-]include    add specified files to index for commit\n    --[no-]interactive    interactively add files\n    -p, --[no-]patch      interactively add changes\n    -U, --unified <n>     generate diffs with <n> lines context\n    --inter-hunk-context <n>\n                          show context between diff hunks up to the specified number of lines\n    -o, --[no-]only       commit only specified files\n    -n, --no-verify       bypass pre-commit and commit-msg hooks\n    --verify              opposite of --no-verify\n    --[no-]dry-run        show what would be committed\n    --[no-]short          show status concisely\n    --[no-]branch         show branch information\n    --[no-]ahead-behind   compute full ahead/behind values\n    --[no-]porcelain      machine-readable output\n    --[no-]long           show status in long format (default)\n    -z, --[no-]null       terminate entries with NUL\n    --[no-]amend          amend previous commit\n    --no-post-rewrite     bypass post-rewrite hook\n    --post-rewrite        opposite of --no-post-rewrite\n    -u, --[no-]untracked-files[=<mode>]\n                          show untracked files, optional modes: all, normal, no. (Default: all)\n    --[no-]pathspec-from-file <file>\n                          read pathspec from file\n    --[no-]pathspec-file-nul\n                          with --pathspec-from-file, pathspec elements are separated with NUL character\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "diff",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "usage: git diff [<options>] [<commit>] [--] [<path>...]\n   or: git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>...]\n   or: git diff [<options>] [--merge-base] <commit> [<commit>...] <commit> [--] [<path>...]\n   or: git diff [<options>] <commit>...<commit> [--] [<path>...]\n   or: git diff [<options>] <blob> <blob>\n   or: git diff [<options>] --no-index [--] <path> <path> [<pathspec>...]\n\ncommon diff options:\n  -z            output diff-raw with lines terminated with NUL.\n  -p            output patch format.\n  -u            synonym for -p.\n  --patch-with-raw\n                output both a patch and the diff-raw format.\n  --stat        show diffstat instead of patch.\n  --numstat     show numeric diffstat instead of patch.\n  --patch-with-stat\n                output a patch and prepend its diffstat.\n  --name-only   show only names of changed files.\n  --name-status show names and status of changed files.\n  --full-index  show full object name on index lines.\n  --abbrev=<n>  abbreviate object names in diff-tree header and diff-raw.\n  -R            swap input file pairs.\n  -B            detect complete rewrites.\n  -M            detect renames.\n  -C            detect copies.\n  --find-copies-harder\n                try unchanged files as candidate for copy detection.\n  -l<n>         limit rename attempts up to <n> paths.\n  -O<file>      reorder diffs according to the <file>.\n  -S<string>    find filepair whose only one side contains the string.\n  --pickaxe-all\n                show all files diff when -S is used and hit is found.\n  -a  --text    treat all files as text.\n\n",
+      "exit": 129
+    },
+    {
+      "git": [
+        "fetch",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git fetch [<options>] [<repository> [<refspec>...]]\n   or: git fetch [<options>] <group>\n   or: git fetch --multiple [<options>] [(<repository> | <group>)...]\n   or: git fetch --all [<options>]\n\n    -v, --[no-]verbose    be more verbose\n    -q, --[no-]quiet      be more quiet\n    --[no-]all            fetch from all remotes\n    --[no-]set-upstream   set upstream for git pull/fetch\n    -a, --[no-]append     append to .git/FETCH_HEAD instead of overwriting\n    --[no-]atomic         use atomic transaction to update references\n    --[no-]upload-pack <path>\n                          path to upload pack on remote end\n    -f, --[no-]force      force overwrite of local reference\n    -m, --[no-]multiple   fetch from multiple remotes\n    -t, --[no-]tags       fetch all tags and associated objects\n    -n                    do not fetch all tags (--no-tags)\n    -j, --[no-]jobs <n>   number of submodules fetched in parallel\n    --[no-]prefetch       modify the refspec to place all refs within refs/prefetch/\n    -p, --[no-]prune      prune remote-tracking branches no longer on remote\n    -P, --[no-]prune-tags prune local tags no longer on remote and clobber changed tags\n    --[no-]recurse-submodules[=<on-demand>]\n                          control recursive fetching of submodules\n    --[no-]dry-run        dry run\n    --[no-]porcelain      machine-readable output\n    --[no-]write-fetch-head\n                          write fetched references to the FETCH_HEAD file\n    -k, --[no-]keep       keep downloaded pack\n    -u, --[no-]update-head-ok\n                          allow updating of HEAD ref\n    --[no-]progress       force progress reporting\n    --[no-]depth <depth>  deepen history of shallow clone\n    --[no-]shallow-since <time>\n                          deepen history of shallow repository based on time\n    --[no-]shallow-exclude <ref>\n                          deepen history of shallow clone, excluding ref\n    --[no-]deepen <n>     deepen history of shallow clone\n    --unshallow           convert to a complete repository\n    --refetch             re-fetch without negotiating common commits\n    --[no-]update-shallow accept refs that update .git/shallow\n    --refmap <refmap>     specify fetch refmap\n    -o, --[no-]server-option <server-specific>\n                          option to transmit\n    -4, --ipv4            use IPv4 addresses only\n    -6, --ipv6            use IPv6 addresses only\n    --[no-]negotiation-tip <revision>\n                          report that we have only objects reachable from this object\n    --[no-]negotiate-only do not fetch a packfile; instead, print ancestors of negotiation tips\n    --[no-]filter <args>  object filtering\n    --[no-]auto-maintenance\n                          run 'maintenance --auto' after fetching\n    --[no-]auto-gc        run 'maintenance --auto' after fetching\n    --[no-]show-forced-updates\n                          check for forced-updates on all updated branches\n    --[no-]write-commit-graph\n                          write the commit-graph after fetching\n    --[no-]stdin          accept refspecs from stdin\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "hash-object",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git hash-object [-t <type>] [-w] [--path=<file> | --no-filters]\n                       [--stdin [--literally]] [--] <file>...\n   or: git hash-object [-t <type>] [-w] --stdin-paths [--no-filters]\n\n    -t <type>             object type\n    -w                    write the object into the object database\n    --[no-]stdin          read the object from stdin\n    --[no-]stdin-paths    read file names from stdin\n    --no-filters          store file as is without filters\n    --filters             opposite of --no-filters\n    --[no-]literally      just hash any random garbage to create corrupt objects for debugging Git\n    --[no-]path <file>    process file as it were from this path\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "init",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git init [-q | --quiet] [--bare] [--template=<template-directory>]\n                [--separate-git-dir <git-dir>] [--object-format=<format>]\n                [--ref-format=<format>]\n                [-b <branch-name> | --initial-branch=<branch-name>]\n                [--shared[=<permissions>]] [<directory>]\n\n    --[no-]template <template-directory>\n                          directory from which templates will be used\n    --[no-]bare           create a bare repository\n    --shared[=<permissions>]\n                          specify that the git repository is to be shared amongst several users\n    -q, --[no-]quiet      be quiet\n    --[no-]separate-git-dir <gitdir>\n                          separate git dir from working tree\n    -b, --[no-]initial-branch <name>\n                          override the name of the initial branch\n    --[no-]object-format <hash>\n                          specify the hash algorithm to use\n    --[no-]ref-format <format>\n                          specify the reference format to use\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "log",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git log [<options>] [<revision-range>] [[--] <path>...]\n   or: git show [<options>] <object>...\n\n    -q, --[no-]quiet      suppress diff output\n    --[no-]source         show source\n    --[no-]use-mailmap    use mail map file\n    --[no-]mailmap        alias of --use-mailmap\n    --clear-decorations   clear all previously-defined decoration filters\n    --[no-]decorate-refs <pattern>\n                          only decorate refs that match <pattern>\n    --[no-]decorate-refs-exclude <pattern>\n                          do not decorate refs that match <pattern>\n    --[no-]decorate[=...] decorate options\n    -L <range:file>       trace the evolution of line range <start>,<end> or function :<funcname> in <file>\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "merge",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git merge [<options>] [<commit>...]\n   or: git merge --abort\n   or: git merge --continue\n\n    -n                    do not show a diffstat at the end of the merge\n    --[no-]stat           show a diffstat at the end of the merge\n    --[no-]summary        (synonym to --stat)\n    --[no-]compact-summary\n                          show a compact-summary at the end of the merge\n    --[no-]log[=<n>]      add (at most <n>) entries from shortlog to merge commit message\n    --[no-]squash         create a single commit instead of doing a merge\n    --[no-]commit         perform a commit if the merge succeeds (default)\n    -e, --[no-]edit       edit message before committing\n    --[no-]cleanup <mode> how to strip spaces and #comments from message\n    --[no-]ff             allow fast-forward (default)\n    --ff-only             abort if fast-forward is not possible\n    --[no-]rerere-autoupdate\n                          update the index with reused conflict resolution if possible\n    --[no-]verify-signatures\n                          verify that the named commit has a valid GPG signature\n    -s, --[no-]strategy <strategy>\n                          merge strategy to use\n    -X, --[no-]strategy-option <option=value>\n                          option for selected merge strategy\n    -m, --[no-]message <message>\n                          merge commit message (for a non-fast-forward merge)\n    -F, --file <path>     read message from file\n    --[no-]into-name <name>\n                          use <name> instead of the real target\n    -v, --[no-]verbose    be more verbose\n    -q, --[no-]quiet      be more quiet\n    --[no-]abort          abort the current in-progress merge\n    --[no-]quit           --abort but leave index and working tree alone\n    --[no-]continue       continue the current in-progress merge\n    --[no-]allow-unrelated-histories\n                          allow merging unrelated histories\n    --[no-]progress       force progress reporting\n    -S, --[no-]gpg-sign[=<key-id>]\n                          GPG sign commit\n    --[no-]autostash      automatically stash/stash pop before and after\n    --[no-]overwrite-ignore\n                          update ignored files (default)\n    --[no-]signoff        add a Signed-off-by trailer\n    --no-verify           bypass pre-merge-commit and commit-msg hooks\n    --verify              opposite of --no-verify\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "pull",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git pull [<options>] [<repository> [<refspec>...]]\n\n    -v, --[no-]verbose    be more verbose\n    -q, --[no-]quiet      be more quiet\n    --[no-]progress       force progress reporting\n    --[no-]recurse-submodules[=<on-demand>]\n                          control for recursive fetching of submodules\n\nOptions related to merging\n    -r, --[no-]rebase[=(false|true|merges|interactive)]\n                          incorporate changes by rebasing rather than merging\n    -n                    do not show a diffstat at the end of the merge\n    --[no-]stat           show a diffstat at the end of the merge\n    --[no-]compact-summary\n                          show a compact-summary at the end of the merge\n    --[no-]log[=<n>]      add (at most <n>) entries from shortlog to merge commit message\n    --[no-]signoff[=...]  add a Signed-off-by trailer\n    --[no-]squash         create a single commit instead of doing a merge\n    --[no-]commit         perform a commit if the merge succeeds (default)\n    --[no-]edit           edit message before committing\n    --[no-]cleanup <mode> how to strip spaces and #comments from message\n    --[no-]ff             allow fast-forward\n    --ff-only             abort if fast-forward is not possible\n    --[no-]verify         control use of pre-merge-commit and commit-msg hooks\n    --[no-]verify-signatures\n                          verify that the named commit has a valid GPG signature\n    --[no-]autostash      automatically stash/stash pop before and after\n    -s, --[no-]strategy <strategy>\n                          merge strategy to use\n    -X, --[no-]strategy-option <option=value>\n                          option for selected merge strategy\n    -S, --[no-]gpg-sign[=<key-id>]\n                          GPG sign commit\n    --[no-]allow-unrelated-histories\n                          allow merging unrelated histories\n\nOptions related to fetching\n    --[no-]all            fetch from all remotes\n    -a, --[no-]append     append to .git/FETCH_HEAD instead of overwriting\n    --[no-]upload-pack <path>\n                          path to upload pack on remote end\n    -f, --[no-]force      force overwrite of local branch\n    -t, --[no-]tags       fetch all tags and associated objects\n    -p, --[no-]prune      prune remote-tracking branches no longer on remote\n    -j, --[no-]jobs[=<n>] number of submodules pulled in parallel\n    --[no-]dry-run        dry run\n    -k, --[no-]keep       keep downloaded pack\n    --[no-]depth <depth>  deepen history of shallow clone\n    --[no-]shallow-since <time>\n                          deepen history of shallow repository based on time\n    --[no-]shallow-exclude <ref>\n                          deepen history of shallow clone, excluding ref\n    --[no-]deepen <n>     deepen history of shallow clone\n    --unshallow           convert to a complete repository\n    --[no-]update-shallow accept refs that update .git/shallow\n    --refmap <refmap>     specify fetch refmap\n    -o, --[no-]server-option <server-specific>\n                          option to transmit\n    -4, --[no-]ipv4       use IPv4 addresses only\n    -6, --[no-]ipv6       use IPv6 addresses only\n    --[no-]negotiation-tip <revision>\n                          report that we have only objects reachable from this object\n    --[no-]show-forced-updates\n                          check for forced-updates on all updated branches\n    --[no-]set-upstream   set upstream for git pull/fetch\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "push",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git push [<options>] [<repository> [<refspec>...]]\n\n    -v, --[no-]verbose    be more verbose\n    -q, --[no-]quiet      be more quiet\n    --[no-]repo <repository>\n                          repository\n    --[no-]all            push all branches\n    --[no-]branches       alias of --all\n    --[no-]mirror         mirror all refs\n    -d, --[no-]delete     delete refs\n    --[no-]tags           push tags (can't be used with --all or --branches or --mirror)\n    -n, --[no-]dry-run    dry run\n    --[no-]porcelain      machine-readable output\n    -f, --[no-]force      force updates\n    --[no-]force-with-lease[=<refname>:<expect>]\n                          require old value of ref to be at this value\n    --[no-]force-if-includes\n                          require remote updates to be integrated locally\n    --[no-]recurse-submodules (check|on-demand|no)\n                          control recursive pushing of submodules\n    --[no-]thin           use thin pack\n    --[no-]receive-pack <receive-pack>\n                          receive pack program\n    --[no-]exec <receive-pack>\n                          receive pack program\n    -u, --[no-]set-upstream\n                          set upstream for git pull/status\n    --[no-]progress       force progress reporting\n    --[no-]prune          prune locally removed refs\n    --no-verify           bypass pre-push hook\n    --verify              opposite of --no-verify\n    --[no-]follow-tags    push missing but relevant tags\n    --[no-]signed[=(yes|no|if-asked)]\n                          GPG sign the push\n    --[no-]atomic         request atomic transaction on remote side\n    -o, --[no-]push-option <server-specific>\n                          option to transmit\n    -4, --ipv4            use IPv4 addresses only\n    -6, --ipv6            use IPv6 addresses only\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "remote",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git remote [-v | --verbose]\n   or: git remote add [-t <branch>] [-m <master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>] <name> <url>\n   or: git remote rename [--[no-]progress] <old> <new>\n   or: git remote remove <name>\n   or: git remote set-head <name> (-a | --auto | -d | --delete | <branch>)\n   or: git remote [-v | --verbose] show [-n] <name>\n   or: git remote prune [-n | --dry-run] <name>\n   or: git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]\n   or: git remote set-branches [--add] <name> <branch>...\n   or: git remote get-url [--push] [--all] <name>\n   or: git remote set-url [--push] <name> <newurl> [<oldurl>]\n   or: git remote set-url --add <name> <newurl>\n   or: git remote set-url --delete <name> <url>\n\n    -v, --[no-]verbose    be verbose; must be placed before a subcommand\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "status",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git status [<options>] [--] [<pathspec>...]\n\n    -v, --[no-]verbose    be verbose\n    -s, --[no-]short      show status concisely\n    -b, --[no-]branch     show branch information\n    --[no-]show-stash     show stash information\n    --[no-]ahead-behind   compute full ahead/behind values\n    --[no-]porcelain[=<version>]\n                          machine-readable output\n    --[no-]long           show status in long format (default)\n    -z, --[no-]null       terminate entries with NUL\n    -u, --[no-]untracked-files[=<mode>]\n                          show untracked files, optional modes: all, normal, no. (Default: all)\n    --[no-]ignored[=<mode>]\n                          show ignored files, optional modes: traditional, matching, no. (Default: traditional)\n    --[no-]ignore-submodules[=<when>]\n                          ignore changes to submodules, optional when: all, dirty, untracked. (Default: all)\n    --[no-]column[=<style>]\n                          list untracked files in columns\n    --no-renames          do not detect renames\n    --renames             opposite of --no-renames\n    -M, --find-renames[=<n>]\n                          detect renames, optionally set similarity index\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "switch",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git switch [<options>] [<branch>]\n\n    -c, --[no-]create <branch>\n                          create and switch to a new branch\n    -C, --[no-]force-create <branch>\n                          create/reset and switch to a branch\n    --[no-]guess          second guess 'git switch <no-such-branch>'\n    --[no-]discard-changes\n                          throw away local modifications\n    -q, --[no-]quiet      suppress progress reporting\n    --[no-]recurse-submodules[=<checkout>]\n                          control recursive updating of submodules\n    --[no-]progress       force progress reporting\n    -m, --[no-]merge      perform a 3-way merge with the new branch\n    --[no-]conflict <style>\n                          conflict style (merge, diff3, or zdiff3)\n    -d, --[no-]detach     detach HEAD at named commit\n    -t, --[no-]track[=(direct|inherit)]\n                          set branch tracking configuration\n    -f, --[no-]force      force checkout (throw away local modifications)\n    --[no-]orphan <new-branch>\n                          new unborn branch\n    --[no-]overwrite-ignore\n                          update ignored files (default)\n    --[no-]ignore-other-worktrees\n                          do not check if another worktree is using this branch\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "write-tree",
+        "-h"
+      ],
+      "cwd": ".",
+      "stdout": "usage: git write-tree [--missing-ok] [--prefix=<prefix>/]\n\n    --[no-]missing-ok     allow missing objects\n    --[no-]prefix <prefix>/\n                          write tree object for a subdirectory <prefix>\n\n",
+      "stderr": "",
+      "exit": 129
+    },
+    {
+      "git": [
+        "status",
+        "--bogus"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "error: unknown option `bogus'\nusage: git status [<options>] [--] [<pathspec>...]\n\n    -v, --[no-]verbose    be verbose\n    -s, --[no-]short      show status concisely\n    -b, --[no-]branch     show branch information\n    --[no-]show-stash     show stash information\n    --[no-]ahead-behind   compute full ahead/behind values\n    --[no-]porcelain[=<version>]\n                          machine-readable output\n    --[no-]long           show status in long format (default)\n    -z, --[no-]null       terminate entries with NUL\n    -u, --[no-]untracked-files[=<mode>]\n                          show untracked files, optional modes: all, normal, no. (Default: all)\n    --[no-]ignored[=<mode>]\n                          show ignored files, optional modes: traditional, matching, no. (Default: traditional)\n    --[no-]ignore-submodules[=<when>]\n                          ignore changes to submodules, optional when: all, dirty, untracked. (Default: all)\n    --[no-]column[=<style>]\n                          list untracked files in columns\n    --no-renames          do not detect renames\n    --renames             opposite of --no-renames\n    -M, --find-renames[=<n>]\n                          detect renames, optionally set similarity index\n\n",
+      "exit": 129
+    },
+    {
+      "git": [
+        "commit",
+        "-x"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "error: unknown switch `x'\nusage: git commit [-a | --interactive | --patch] [-s] [-v] [-u[<mode>]] [--amend]\n                  [--dry-run] [(-c | -C | --squash) <commit> | --fixup [(amend|reword):]<commit>]\n                  [-F <file> | -m <msg>] [--reset-author] [--allow-empty]\n                  [--allow-empty-message] [--no-verify] [-e] [--author=<author>]\n                  [--date=<date>] [--cleanup=<mode>] [--[no-]status]\n                  [-i | -o] [--pathspec-from-file=<file> [--pathspec-file-nul]]\n                  [(--trailer <token>[(=|:)<value>])...] [-S[<keyid>]]\n                  [--] [<pathspec>...]\n\n    -q, --[no-]quiet      suppress summary after successful commit\n    -v, --[no-]verbose    show diff in commit message template\n\nCommit message options\n    -F, --[no-]file <file>\n                          read message from file\n    --[no-]author <author>\n                          override author for commit\n    --[no-]date <date>    override date for commit\n    -m, --[no-]message <message>\n                          commit message\n    -c, --[no-]reedit-message <commit>\n                          reuse and edit message from specified commit\n    -C, --[no-]reuse-message <commit>\n                          reuse message from specified commit\n    --[no-]fixup [(amend|reword):]commit\n                          use autosquash formatted message to fixup or amend/reword specified commit\n    --[no-]squash <commit>\n                          use autosquash formatted message to squash specified commit\n    --[no-]reset-author   the commit is authored by me now (used with -C/-c/--amend)\n    --trailer <trailer>   add custom trailer(s)\n    -s, --[no-]signoff    add a Signed-off-by trailer\n    -t, --[no-]template <file>\n                          use specified template file\n    -e, --[no-]edit       force edit of commit\n    --[no-]cleanup <mode> how to strip spaces and #comments from message\n    --[no-]status         include status in commit message template\n    -S, --[no-]gpg-sign[=<key-id>]\n                          GPG sign commit\n\nCommit contents options\n    -a, --[no-]all        commit all changed files\n    -i, --[no-]include    add specified files to index for commit\n    --[no-]interactive    interactively add files\n    -p, --[no-]patch      interactively add changes\n    -U, --unified <n>     generate diffs with <n> lines context\n    --inter-hunk-context <n>\n                          show context between diff hunks up to the specified number of lines\n    -o, --[no-]only       commit only specified files\n    -n, --no-verify       bypass pre-commit and commit-msg hooks\n    --verify              opposite of --no-verify\n    --[no-]dry-run        show what would be committed\n    --[no-]short          show status concisely\n    --[no-]branch         show branch information\n    --[no-]ahead-behind   compute full ahead/behind values\n    --[no-]porcelain      machine-readable output\n    --[no-]long           show status in long format (default)\n    -z, --[no-]null       terminate entries with NUL\n    --[no-]amend          amend previous commit\n    --no-post-rewrite     bypass post-rewrite hook\n    --post-rewrite        opposite of --no-post-rewrite\n    -u, --[no-]untracked-files[=<mode>]\n                          show untracked files, optional modes: all, normal, no. (Default: all)\n    --[no-]pathspec-from-file <file>\n                          read pathspec from file\n    --[no-]pathspec-file-nul\n                          with --pathspec-from-file, pathspec elements are separated with NUL character\n\n",
+      "exit": 129
+    },
+    {
+      "git": [
+        "diff",
+        "--bogus"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "error: invalid option: --bogus\nusage: git diff [<options>] [<commit>] [--] [<path>...]\n   or: git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>...]\n   or: git diff [<options>] [--merge-base] <commit> [<commit>...] <commit> [--] [<path>...]\n   or: git diff [<options>] <commit>...<commit> [--] [<path>...]\n   or: git diff [<options>] <blob> <blob>\n   or: git diff [<options>] --no-index [--] <path> <path> [<pathspec>...]\n\ncommon diff options:\n  -z            output diff-raw with lines terminated with NUL.\n  -p            output patch format.\n  -u            synonym for -p.\n  --patch-with-raw\n                output both a patch and the diff-raw format.\n  --stat        show diffstat instead of patch.\n  --numstat     show numeric diffstat instead of patch.\n  --patch-with-stat\n                output a patch and prepend its diffstat.\n  --name-only   show only names of changed files.\n  --name-status show names and status of changed files.\n  --full-index  show full object name on index lines.\n  --abbrev=<n>  abbreviate object names in diff-tree header and diff-raw.\n  -R            swap input file pairs.\n  -B            detect complete rewrites.\n  -M            detect renames.\n  -C            detect copies.\n  --find-copies-harder\n                try unchanged files as candidate for copy detection.\n  -l<n>         limit rename attempts up to <n> paths.\n  -O<file>      reorder diffs according to the <file>.\n  -S<string>    find filepair whose only one side contains the string.\n  --pickaxe-all\n                show all files diff when -S is used and hit is found.\n  -a  --text    treat all files as text.\n\n",
+      "exit": 129
+    }
+  ],
+  "snapshot": [
+    {
+      "path": ".git/",
+      "dir": true
+    },
+    {
+      "path": ".git/HEAD",
+      "size": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "text": "ref: refs/heads/master\n"
+    },
+    {
+      "path": ".git/config",
+      "size": 130,
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc",
+      "text": "[core]\n\trepositoryformatversion = 0\n\tfilemode = false\n\tbare = false\n\tlogallrefupdates = true\n\tsymlinks = false\n\tignorecase = true\n"
+    },
+    {
+      "path": ".git/description",
+      "size": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+      "text": "Unnamed repository; edit this file 'description' to name the repository.\n"
+    },
+    {
+      "path": ".git/hooks/",
+      "dir": true
+    },
+    {
+      "path": ".git/hooks/applypatch-msg.sample",
+      "size": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "path": ".git/hooks/commit-msg.sample",
+      "size": 896,
+      "sha256": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437"
+    },
+    {
+      "path": ".git/hooks/fsmonitor-watchman.sample",
+      "size": 4726,
+      "sha256": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0"
+    },
+    {
+      "path": ".git/hooks/post-update.sample",
+      "size": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "path": ".git/hooks/pre-applypatch.sample",
+      "size": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "path": ".git/hooks/pre-commit.sample",
+      "size": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "path": ".git/hooks/pre-merge-commit.sample",
+      "size": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "path": ".git/hooks/pre-push.sample",
+      "size": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "path": ".git/hooks/pre-rebase.sample",
+      "size": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "path": ".git/hooks/pre-receive.sample",
+      "size": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "path": ".git/hooks/prepare-commit-msg.sample",
+      "size": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "path": ".git/hooks/push-to-checkout.sample",
+      "size": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "path": ".git/hooks/sendemail-validate.sample",
+      "size": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "path": ".git/hooks/update.sample",
+      "size": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "path": ".git/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/info/exclude",
+      "size": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+      "text": "# git ls-files --others --exclude-from=.git/info/exclude\n# Lines that start with '#' are comments.\n# For a project mostly in C, the following would be a good set of\n# exclude patterns (uncomment them if you want to use them):\n# *.[oa]\n# *~\n"
+    },
+    {
+      "path": ".git/objects/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/pack/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/tags/",
+      "dir": true
+    }
+  ]
+}

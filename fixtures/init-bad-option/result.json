@@ -1,0 +1,20 @@
+{
+  "name": "init-bad-option",
+  "covers": [
+    "cmd.init",
+    "cli.exit-codes"
+  ],
+  "steps": [
+    {
+      "git": [
+        "init",
+        "--bogus"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "error: unknown option `bogus'\nusage: git init [-q | --quiet] [--bare] [--template=<template-directory>]\n                [--separate-git-dir <git-dir>] [--object-format=<format>]\n                [--ref-format=<format>]\n                [-b <branch-name> | --initial-branch=<branch-name>]\n                [--shared[=<permissions>]] [<directory>]\n\n    --[no-]template <template-directory>\n                          directory from which templates will be used\n    --[no-]bare           create a bare repository\n    --shared[=<permissions>]\n                          specify that the git repository is to be shared amongst several users\n    -q, --[no-]quiet      be quiet\n    --[no-]separate-git-dir <gitdir>\n                          separate git dir from working tree\n    -b, --[no-]initial-branch <name>\n                          override the name of the initial branch\n    --[no-]object-format <hash>\n                          specify the hash algorithm to use\n    --[no-]ref-format <format>\n                          specify the reference format to use\n\n",
+      "exit": 129
+    }
+  ],
+  "snapshot": []
+}

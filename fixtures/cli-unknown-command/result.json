@@ -1,0 +1,27 @@
+{
+  "name": "cli-unknown-command",
+  "covers": [
+    "cli.unknown-command"
+  ],
+  "steps": [
+    {
+      "git": [
+        "frobnicate"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "git: 'frobnicate' is not a git command. See 'git --help'.\n",
+      "exit": 1
+    },
+    {
+      "git": [
+        "stauts"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "git: 'stauts' is not a git command. See 'git --help'.\n\nThe most similar command is\n\tstatus\n",
+      "exit": 1
+    }
+  ],
+  "snapshot": []
+}

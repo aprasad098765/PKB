@@ -1,0 +1,557 @@
+{
+  "name": "cache-tree-order",
+  "covers": [
+    "cmd.write-tree",
+    "index.format-v2"
+  ],
+  "steps": [
+    {
+      "git": [
+        "init",
+        "-q"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "write": "zz/x"
+    },
+    {
+      "write": "a/x"
+    },
+    {
+      "write": "bbb/x"
+    },
+    {
+      "write": "c/x"
+    },
+    {
+      "write": "c/dd/x"
+    },
+    {
+      "write": "c/e/x"
+    },
+    {
+      "git": [
+        "add",
+        "."
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "write-tree"
+      ],
+      "cwd": ".",
+      "stdout": "3301bb2c52746d03aaac7dad7ef9753f64fe0d91\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "write": "c/e/x"
+    },
+    {
+      "git": [
+        "add",
+        "c/e/x"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    }
+  ],
+  "snapshot": [
+    {
+      "path": ".git/",
+      "dir": true
+    },
+    {
+      "path": ".git/HEAD",
+      "size": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "text": "ref: refs/heads/master\n"
+    },
+    {
+      "path": ".git/config",
+      "size": 130,
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc",
+      "text": "[core]\n\trepositoryformatversion = 0\n\tfilemode = false\n\tbare = false\n\tlogallrefupdates = true\n\tsymlinks = false\n\tignorecase = true\n"
+    },
+    {
+      "path": ".git/description",
+      "size": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+      "text": "Unnamed repository; edit this file 'description' to name the repository.\n"
+    },
+    {
+      "path": ".git/hooks/",
+      "dir": true
+    },
+    {
+      "path": ".git/hooks/applypatch-msg.sample",
+      "size": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "path": ".git/hooks/commit-msg.sample",
+      "size": 896,
+      "sha256": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437"
+    },
+    {
+      "path": ".git/hooks/fsmonitor-watchman.sample",
+      "size": 4726,
+      "sha256": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0"
+    },
+    {
+      "path": ".git/hooks/post-update.sample",
+      "size": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "path": ".git/hooks/pre-applypatch.sample",
+      "size": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "path": ".git/hooks/pre-commit.sample",
+      "size": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "path": ".git/hooks/pre-merge-commit.sample",
+      "size": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "path": ".git/hooks/pre-push.sample",
+      "size": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "path": ".git/hooks/pre-rebase.sample",
+      "size": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "path": ".git/hooks/pre-receive.sample",
+      "size": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "path": ".git/hooks/prepare-commit-msg.sample",
+      "size": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "path": ".git/hooks/push-to-checkout.sample",
+      "size": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "path": ".git/hooks/sendemail-validate.sample",
+      "size": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "path": ".git/hooks/update.sample",
+      "size": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "path": ".git/index",
+      "size": 600,
+      "sha256": "2e38a25471032ab342d4f3fede20fc61fedb3df7d88ccc13d05732affa5eaa07",
+      "index": {
+        "version": 2,
+        "count": 6,
+        "entries": [
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "0cfbf08886fca9a91cb753ec8734c84fcbe52c9f",
+            "stage": 0,
+            "flags_namelen": 3,
+            "path": "a/x"
+          },
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "00750edc07d6415dcc07ae0351e9397b0222b7ba",
+            "stage": 0,
+            "flags_namelen": 5,
+            "path": "bbb/x"
+          },
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "7ed6ff82de6bcc2a78243fc9c54d3ef5ac14da69",
+            "stage": 0,
+            "flags_namelen": 6,
+            "path": "c/dd/x"
+          },
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "7f8f011eb73d6043d2e6db9d2c101195ae2801f2",
+            "stage": 0,
+            "flags_namelen": 5,
+            "path": "c/e/x"
+          },
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "b8626c4cff2849624fb67f87cd0ad72b163671ad",
+            "stage": 0,
+            "flags_namelen": 3,
+            "path": "c/x"
+          },
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d",
+            "stage": 0,
+            "flags_namelen": 4,
+            "path": "zz/x"
+          }
+        ],
+        "extensions": [
+          {
+            "sig": "TREE",
+            "len": 128,
+            "data_hex": "002d3120340a61003120300a1168b65cc4804aa14b9ab05da96f090e333bb7ff63002d3120320a65002d3120300a6464003120300a99d4a8c0294a5be331ebc31c94c108d8a8e21ef37a7a003120300a1808145eca0a3bc7bbbd9ec1645e022e830c05eb626262003120300aedc566508fc1a91964d1ad1c27574fdab11e3da1"
+          }
+        ],
+        "trailer_ok": true
+      }
+    },
+    {
+      "path": ".git/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/info/exclude",
+      "size": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+      "text": "# git ls-files --others --exclude-from=.git/info/exclude\n# Lines that start with '#' are comments.\n# For a project mostly in C, the following would be a good set of\n# exclude patterns (uncomment them if you want to use them):\n# *.[oa]\n# *~\n"
+    },
+    {
+      "path": ".git/objects/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/00/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/00/750edc07d6415dcc07ae0351e9397b0222b7ba",
+      "size": 17,
+      "sha256": "ba00aaaddb03340bc2b3104c91b5920f28defd21c7976158649a5817253eca31",
+      "object": {
+        "header": "blob 2",
+        "oid": "00750edc07d6415dcc07ae0351e9397b0222b7ba",
+        "content": "3\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/0c/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/0c/fbf08886fca9a91cb753ec8734c84fcbe52c9f",
+      "size": 17,
+      "sha256": "fdc2e0665a833805bfa6a3598eacc33f0cf47ba64fbe9240e636775e1dd97673",
+      "object": {
+        "header": "blob 2",
+        "oid": "0cfbf08886fca9a91cb753ec8734c84fcbe52c9f",
+        "content": "2\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/11/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/11/68b65cc4804aa14b9ab05da96f090e333bb7ff",
+      "size": 46,
+      "sha256": "8b9eae46536bad7b8a6dfd5cb9189504769159acb25383e9c0f1059acbe5216f",
+      "object": {
+        "header": "tree 29",
+        "oid": "1168b65cc4804aa14b9ab05da96f090e333bb7ff",
+        "content": [
+          "100644 x 0cfbf08886fca9a91cb753ec8734c84fcbe52c9f"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/18/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/18/08145eca0a3bc7bbbd9ec1645e022e830c05eb",
+      "size": 46,
+      "sha256": "48edd4392c92a09599631357a08ca508605b94676f3bdea416a46034a537b4e0",
+      "object": {
+        "header": "tree 29",
+        "oid": "1808145eca0a3bc7bbbd9ec1645e022e830c05eb",
+        "content": [
+          "100644 x d00491fd7e5bb6fa28c517a0bb32b8b506539d4d"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/1e/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/1e/8b314962144c26d5e0e50fd29d2ca327864913",
+      "size": 17,
+      "sha256": "8cbf349abdc7bdd78df5e937920ea32546a409ef6f2ee815c0c755e1f6628c86",
+      "object": {
+        "header": "blob 2",
+        "oid": "1e8b314962144c26d5e0e50fd29d2ca327864913",
+        "content": "6\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/1f/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/1f/14556e86c18a077c62bb98cb864c06755b891a",
+      "size": 99,
+      "sha256": "56e1a0fc47dc90f3613f53729e0d8aa3a0b74e3c91e2187cf1a2f9eb50877ddf",
+      "object": {
+        "header": "tree 86",
+        "oid": "1f14556e86c18a077c62bb98cb864c06755b891a",
+        "content": [
+          "40000 dd 99d4a8c0294a5be331ebc31c94c108d8a8e21ef3",
+          "40000 e 6eb998085a33ec006857b0cc427f25425aa18f50",
+          "100644 x b8626c4cff2849624fb67f87cd0ad72b163671ad"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/33/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/33/01bb2c52746d03aaac7dad7ef9753f64fe0d91",
+      "size": 121,
+      "sha256": "cc7ebc43d9176197703b1f61354e474634815fe11ed565fcd4ba383fe6984f28",
+      "object": {
+        "header": "tree 115",
+        "oid": "3301bb2c52746d03aaac7dad7ef9753f64fe0d91",
+        "content": [
+          "40000 a 1168b65cc4804aa14b9ab05da96f090e333bb7ff",
+          "40000 bbb edc566508fc1a91964d1ad1c27574fdab11e3da1",
+          "40000 c 1f14556e86c18a077c62bb98cb864c06755b891a",
+          "40000 zz 1808145eca0a3bc7bbbd9ec1645e022e830c05eb"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/6e/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/6e/b998085a33ec006857b0cc427f25425aa18f50",
+      "size": 45,
+      "sha256": "779dbeebfb8668bf5552e5212cf2f0316e833ca034906531e065c69db07a9766",
+      "object": {
+        "header": "tree 29",
+        "oid": "6eb998085a33ec006857b0cc427f25425aa18f50",
+        "content": [
+          "100644 x 1e8b314962144c26d5e0e50fd29d2ca327864913"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/7e/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/7e/d6ff82de6bcc2a78243fc9c54d3ef5ac14da69",
+      "size": 17,
+      "sha256": "be593be6558deaa95eeaa9cfd35416b07cfa71a6b83afc02e4e5d8b0832b4562",
+      "object": {
+        "header": "blob 2",
+        "oid": "7ed6ff82de6bcc2a78243fc9c54d3ef5ac14da69",
+        "content": "5\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/7f/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/7f/8f011eb73d6043d2e6db9d2c101195ae2801f2",
+      "size": 17,
+      "sha256": "d5d4da5b352fcf9d739dd5b7b8bf37385fd2551c5140252141906b322bdcc746",
+      "object": {
+        "header": "blob 2",
+        "oid": "7f8f011eb73d6043d2e6db9d2c101195ae2801f2",
+        "content": "7\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/99/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/99/d4a8c0294a5be331ebc31c94c108d8a8e21ef3",
+      "size": 46,
+      "sha256": "a034f5fe20dd7cbad8e1ac7cb8af95d9aa30ad29da49ab67ed6eb0a0e123bd86",
+      "object": {
+        "header": "tree 29",
+        "oid": "99d4a8c0294a5be331ebc31c94c108d8a8e21ef3",
+        "content": [
+          "100644 x 7ed6ff82de6bcc2a78243fc9c54d3ef5ac14da69"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/b8/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/b8/626c4cff2849624fb67f87cd0ad72b163671ad",
+      "size": 17,
+      "sha256": "57a100787e551b23f07a7714af160c816ff5a1c083b49e1f6237b0a61d76a754",
+      "object": {
+        "header": "blob 2",
+        "oid": "b8626c4cff2849624fb67f87cd0ad72b163671ad",
+        "content": "4\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/d0/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/d0/0491fd7e5bb6fa28c517a0bb32b8b506539d4d",
+      "size": 17,
+      "sha256": "692d0897ea175140a35a64de98789fb0d6d3a929e1b12405bb316d6a15f72815",
+      "object": {
+        "header": "blob 2",
+        "oid": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d",
+        "content": "1\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/ed/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/ed/c566508fc1a91964d1ad1c27574fdab11e3da1",
+      "size": 46,
+      "sha256": "2ad9692d0f58ae7ab3c110569fd7971a80bf0a2c8a5bf295625f81c432f43f90",
+      "object": {
+        "header": "tree 29",
+        "oid": "edc566508fc1a91964d1ad1c27574fdab11e3da1",
+        "content": [
+          "100644 x 00750edc07d6415dcc07ae0351e9397b0222b7ba"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/pack/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/tags/",
+      "dir": true
+    },
+    {
+      "path": "a/",
+      "dir": true
+    },
+    {
+      "path": "a/x",
+      "size": 2,
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "text": "2\n"
+    },
+    {
+      "path": "bbb/",
+      "dir": true
+    },
+    {
+      "path": "bbb/x",
+      "size": 2,
+      "sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+      "text": "3\n"
+    },
+    {
+      "path": "c/",
+      "dir": true
+    },
+    {
+      "path": "c/dd/",
+      "dir": true
+    },
+    {
+      "path": "c/dd/x",
+      "size": 2,
+      "sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+      "text": "5\n"
+    },
+    {
+      "path": "c/e/",
+      "dir": true
+    },
+    {
+      "path": "c/e/x",
+      "size": 2,
+      "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58",
+      "text": "7\n"
+    },
+    {
+      "path": "c/x",
+      "size": 2,
+      "sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+      "text": "4\n"
+    },
+    {
+      "path": "zz/",
+      "dir": true
+    },
+    {
+      "path": "zz/x",
+      "size": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "text": "1\n"
+    }
+  ]
+}

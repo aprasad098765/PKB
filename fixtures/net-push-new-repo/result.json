@@ -1,0 +1,598 @@
+{
+  "name": "net-push-new-repo",
+  "covers": [
+    "net.push"
+  ],
+  "steps": [
+    {
+      "srv": [
+        "init",
+        "-q",
+        "--bare",
+        "fresh.git"
+      ],
+      "exit": 0
+    },
+    {
+      "git": [
+        "init",
+        "-q",
+        "w"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "write": "w/a"
+    },
+    {
+      "git": [
+        "add",
+        "a"
+      ],
+      "cwd": "w",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "commit",
+        "-q",
+        "-m",
+        "a"
+      ],
+      "cwd": "w",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "push",
+        "{AUTH}/fresh.git",
+        "master"
+      ],
+      "cwd": "w",
+      "stdout": "",
+      "stderr": "To http://<HOST>/fresh.git\n * [new branch]      master -> master\n",
+      "exit": 0
+    },
+    {
+      "git": [
+        "clone",
+        "-q",
+        "{URL}/fresh.git",
+        "back"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "log",
+        "--oneline"
+      ],
+      "cwd": "back",
+      "stdout": "c6cbed1 a\n",
+      "stderr": "",
+      "exit": 0
+    }
+  ],
+  "snapshot": [
+    {
+      "path": "back/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/HEAD",
+      "size": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "text": "ref: refs/heads/master\n"
+    },
+    {
+      "path": "back/.git/config",
+      "size": 295,
+      "sha256": "e9dea71e95d5ef66eeef363731c6fb6b12230abe7dfa265d1ae26bbb6e127021",
+      "text": "[core]\n\trepositoryformatversion = 0\n\tfilemode = false\n\tbare = false\n\tlogallrefupdates = true\n\tsymlinks = false\n\tignorecase = true\n[remote \"origin\"]\n\turl = http://<HOST>/fresh.git\n\tfetch = +refs/heads/*:refs/remotes/origin/*\n[branch \"master\"]\n\tremote = origin\n\tmerge = refs/heads/master\n"
+    },
+    {
+      "path": "back/.git/description",
+      "size": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+      "text": "Unnamed repository; edit this file 'description' to name the repository.\n"
+    },
+    {
+      "path": "back/.git/hooks/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/hooks/applypatch-msg.sample",
+      "size": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "path": "back/.git/hooks/commit-msg.sample",
+      "size": 896,
+      "sha256": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437"
+    },
+    {
+      "path": "back/.git/hooks/fsmonitor-watchman.sample",
+      "size": 4726,
+      "sha256": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0"
+    },
+    {
+      "path": "back/.git/hooks/post-update.sample",
+      "size": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "path": "back/.git/hooks/pre-applypatch.sample",
+      "size": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "path": "back/.git/hooks/pre-commit.sample",
+      "size": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "path": "back/.git/hooks/pre-merge-commit.sample",
+      "size": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "path": "back/.git/hooks/pre-push.sample",
+      "size": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "path": "back/.git/hooks/pre-rebase.sample",
+      "size": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "path": "back/.git/hooks/pre-receive.sample",
+      "size": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "path": "back/.git/hooks/prepare-commit-msg.sample",
+      "size": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "path": "back/.git/hooks/push-to-checkout.sample",
+      "size": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "path": "back/.git/hooks/sendemail-validate.sample",
+      "size": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "path": "back/.git/hooks/update.sample",
+      "size": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "path": "back/.git/index",
+      "size": 129,
+      "sha256": "fec7b0c2eeccf1cea8f832607eabff849606712996c7f16218d9361da066a697",
+      "index": {
+        "version": 2,
+        "count": 1,
+        "entries": [
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "78981922613b2afb6025042ff6bd878ac1994e85",
+            "stage": 0,
+            "flags_namelen": 1,
+            "path": "a"
+          }
+        ],
+        "extensions": [
+          {
+            "sig": "TREE",
+            "len": 25,
+            "data_hex": "003120300aaaff74984cccd156a469afa7d9ab10e4777beb24"
+          }
+        ],
+        "trailer_ok": true
+      }
+    },
+    {
+      "path": "back/.git/info/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/info/exclude",
+      "size": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+      "text": "# git ls-files --others --exclude-from=.git/info/exclude\n# Lines that start with '#' are comments.\n# For a project mostly in C, the following would be a good set of\n# exclude patterns (uncomment them if you want to use them):\n# *.[oa]\n# *~\n"
+    },
+    {
+      "path": "back/.git/logs/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/logs/HEAD",
+      "size": 179,
+      "sha256": "51326f2e1b3ec6f76ff54743676b1a95a5cde4b49d9392cc07a30f1061c7700c",
+      "text": "0000000000000000000000000000000000000000 c6cbed15fad51b6de16b26d998c1632a6695d59e C O Mitter <committer@example.com> 1700000360 +0530\tclone: from http://<HOST>/fresh.git\n"
+    },
+    {
+      "path": "back/.git/logs/refs/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/logs/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/logs/refs/heads/master",
+      "size": 179,
+      "sha256": "51326f2e1b3ec6f76ff54743676b1a95a5cde4b49d9392cc07a30f1061c7700c",
+      "text": "0000000000000000000000000000000000000000 c6cbed15fad51b6de16b26d998c1632a6695d59e C O Mitter <committer@example.com> 1700000360 +0530\tclone: from http://<HOST>/fresh.git\n"
+    },
+    {
+      "path": "back/.git/logs/refs/remotes/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/logs/refs/remotes/origin/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/logs/refs/remotes/origin/HEAD",
+      "size": 179,
+      "sha256": "51326f2e1b3ec6f76ff54743676b1a95a5cde4b49d9392cc07a30f1061c7700c",
+      "text": "0000000000000000000000000000000000000000 c6cbed15fad51b6de16b26d998c1632a6695d59e C O Mitter <committer@example.com> 1700000360 +0530\tclone: from http://<HOST>/fresh.git\n"
+    },
+    {
+      "path": "back/.git/objects/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/objects/info/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/objects/pack/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/objects/pack/pack-dc8fa82349a66ac4f8b2d5576eef750e462100da.idx",
+      "size": 1156,
+      "sha256": "a8df63ec3691e322ddb426b367e89c44184fb470d33de0174f31f8b2b41ba830"
+    },
+    {
+      "path": "back/.git/objects/pack/pack-dc8fa82349a66ac4f8b2d5576eef750e462100da.pack",
+      "size": 207,
+      "sha256": "3f166b5a831785e7794165b8061f4b306b142019f7452c867ce4fa43b47e45e4"
+    },
+    {
+      "path": "back/.git/objects/pack/pack-dc8fa82349a66ac4f8b2d5576eef750e462100da.rev",
+      "size": 64,
+      "sha256": "d355a7c552de6523903a6b87d43cf6206d9c5a3faffa8f0d2ec4d640e09e4b67"
+    },
+    {
+      "path": "back/.git/packed-refs",
+      "size": 114,
+      "sha256": "17bedb8113203f073cd8c1e7ee3206f987e7cc1536e5df000539f2918c8fb9a3",
+      "text": "# pack-refs with: peeled fully-peeled sorted \nc6cbed15fad51b6de16b26d998c1632a6695d59e refs/remotes/origin/master\n"
+    },
+    {
+      "path": "back/.git/refs/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/refs/heads/master",
+      "size": 41,
+      "sha256": "6ace8880782ab4700118d0f28cf41efa19e3cfc12376434b04433cbec0dd1d54",
+      "text": "c6cbed15fad51b6de16b26d998c1632a6695d59e\n"
+    },
+    {
+      "path": "back/.git/refs/remotes/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/refs/remotes/origin/",
+      "dir": true
+    },
+    {
+      "path": "back/.git/refs/remotes/origin/HEAD",
+      "size": 32,
+      "sha256": "cdc65e67690c4c6475174e5ec662b70655246a2f3924354778835ab3be70aa76",
+      "text": "ref: refs/remotes/origin/master\n"
+    },
+    {
+      "path": "back/.git/refs/tags/",
+      "dir": true
+    },
+    {
+      "path": "back/a",
+      "size": 2,
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "text": "a\n"
+    },
+    {
+      "path": "w/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/COMMIT_EDITMSG",
+      "size": 2,
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "text": "a\n"
+    },
+    {
+      "path": "w/.git/HEAD",
+      "size": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "text": "ref: refs/heads/master\n"
+    },
+    {
+      "path": "w/.git/config",
+      "size": 130,
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc",
+      "text": "[core]\n\trepositoryformatversion = 0\n\tfilemode = false\n\tbare = false\n\tlogallrefupdates = true\n\tsymlinks = false\n\tignorecase = true\n"
+    },
+    {
+      "path": "w/.git/description",
+      "size": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+      "text": "Unnamed repository; edit this file 'description' to name the repository.\n"
+    },
+    {
+      "path": "w/.git/hooks/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/hooks/applypatch-msg.sample",
+      "size": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "path": "w/.git/hooks/commit-msg.sample",
+      "size": 896,
+      "sha256": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437"
+    },
+    {
+      "path": "w/.git/hooks/fsmonitor-watchman.sample",
+      "size": 4726,
+      "sha256": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0"
+    },
+    {
+      "path": "w/.git/hooks/post-update.sample",
+      "size": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "path": "w/.git/hooks/pre-applypatch.sample",
+      "size": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "path": "w/.git/hooks/pre-commit.sample",
+      "size": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "path": "w/.git/hooks/pre-merge-commit.sample",
+      "size": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "path": "w/.git/hooks/pre-push.sample",
+      "size": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "path": "w/.git/hooks/pre-rebase.sample",
+      "size": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "path": "w/.git/hooks/pre-receive.sample",
+      "size": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "path": "w/.git/hooks/prepare-commit-msg.sample",
+      "size": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "path": "w/.git/hooks/push-to-checkout.sample",
+      "size": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "path": "w/.git/hooks/sendemail-validate.sample",
+      "size": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "path": "w/.git/hooks/update.sample",
+      "size": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "path": "w/.git/index",
+      "size": 129,
+      "sha256": "5cfdf1d5bddb5ac4048045c0aa082f7f5c4599f61793afbdbc1b49fad21f2d52",
+      "index": {
+        "version": 2,
+        "count": 1,
+        "entries": [
+          {
+            "mode": "100644",
+            "size": 2,
+            "oid": "78981922613b2afb6025042ff6bd878ac1994e85",
+            "stage": 0,
+            "flags_namelen": 1,
+            "path": "a"
+          }
+        ],
+        "extensions": [
+          {
+            "sig": "TREE",
+            "len": 25,
+            "data_hex": "003120300aaaff74984cccd156a469afa7d9ab10e4777beb24"
+          }
+        ],
+        "trailer_ok": true
+      }
+    },
+    {
+      "path": "w/.git/info/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/info/exclude",
+      "size": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+      "text": "# git ls-files --others --exclude-from=.git/info/exclude\n# Lines that start with '#' are comments.\n# For a project mostly in C, the following would be a good set of\n# exclude patterns (uncomment them if you want to use them):\n# *.[oa]\n# *~\n"
+    },
+    {
+      "path": "w/.git/logs/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/logs/HEAD",
+      "size": 154,
+      "sha256": "4c3ff7989cdf8dd7329b9abf542a2250159b60a5587e7f500c1d3deab08d40c8",
+      "text": "0000000000000000000000000000000000000000 c6cbed15fad51b6de16b26d998c1632a6695d59e C O Mitter <committer@example.com> 1700000240 +0530\tcommit (initial): a\n"
+    },
+    {
+      "path": "w/.git/logs/refs/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/logs/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/logs/refs/heads/master",
+      "size": 154,
+      "sha256": "4c3ff7989cdf8dd7329b9abf542a2250159b60a5587e7f500c1d3deab08d40c8",
+      "text": "0000000000000000000000000000000000000000 c6cbed15fad51b6de16b26d998c1632a6695d59e C O Mitter <committer@example.com> 1700000240 +0530\tcommit (initial): a\n"
+    },
+    {
+      "path": "w/.git/objects/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/objects/78/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/objects/78/981922613b2afb6025042ff6bd878ac1994e85",
+      "size": 17,
+      "sha256": "bff74aa791a45aa879a26559d8c703f8b81af191a833330c376a6307ce2a1400",
+      "object": {
+        "header": "blob 2",
+        "oid": "78981922613b2afb6025042ff6bd878ac1994e85",
+        "content": "a\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": "w/.git/objects/aa/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/objects/aa/ff74984cccd156a469afa7d9ab10e4777beb24",
+      "size": 45,
+      "sha256": "5c518a49d72a4a15838c3cb64408363ab79cdb36217857de1c69ce2d3cf11473",
+      "object": {
+        "header": "tree 29",
+        "oid": "aaff74984cccd156a469afa7d9ab10e4777beb24",
+        "content": [
+          "100644 a 78981922613b2afb6025042ff6bd878ac1994e85"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": "w/.git/objects/c6/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/objects/c6/cbed15fad51b6de16b26d998c1632a6695d59e",
+      "size": 130,
+      "sha256": "abc22c1e85373586bfe1756d1de595f628e6efad87e0490fc275b2a7428cc021",
+      "object": {
+        "header": "commit 165",
+        "oid": "c6cbed15fad51b6de16b26d998c1632a6695d59e",
+        "content": "tree aaff74984cccd156a469afa7d9ab10e4777beb24\nauthor A U Thor <author@example.com> 1700000240 +0530\ncommitter C O Mitter <committer@example.com> 1700000240 +0530\n\na\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": "w/.git/objects/info/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/objects/pack/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/refs/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": "w/.git/refs/heads/master",
+      "size": 41,
+      "sha256": "6ace8880782ab4700118d0f28cf41efa19e3cfc12376434b04433cbec0dd1d54",
+      "text": "c6cbed15fad51b6de16b26d998c1632a6695d59e\n"
+    },
+    {
+      "path": "w/.git/refs/tags/",
+      "dir": true
+    },
+    {
+      "path": "w/a",
+      "size": 2,
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "text": "a\n"
+    }
+  ],
+  "remote": [
+    {
+      "path": "fresh.git/HEAD",
+      "size": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "text": "ref: refs/heads/master\n"
+    },
+    {
+      "path": "fresh.git/refs/heads/master",
+      "size": 41,
+      "sha256": "6ace8880782ab4700118d0f28cf41efa19e3cfc12376434b04433cbec0dd1d54",
+      "text": "c6cbed15fad51b6de16b26d998c1632a6695d59e\n"
+    }
+  ]
+}

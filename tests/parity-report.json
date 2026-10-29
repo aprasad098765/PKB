@@ -1,0 +1,135 @@
+{
+  "generated": "2026-10-29T08:08:47.393Z",
+  "impl": "node src/cli.ts",
+  "scenarios": [
+    {
+      "name": "init-initial-branch-option",
+      "covers": [
+        "cmd.init"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "status-branch-other",
+      "covers": [
+        "cmd.status"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "branch-ops",
+      "covers": [
+        "cmd.branch",
+        "refs.files"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "branch-delete-current",
+      "covers": [
+        "cmd.branch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "3/5"
+    },
+    {
+      "name": "branch-delete-unmerged",
+      "covers": [
+        "cmd.branch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    },
+    {
+      "name": "branch-empty-repo",
+      "covers": [
+        "cmd.branch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "branch-rename-copy",
+      "covers": [
+        "cmd.branch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "ho-branch-misc",
+      "covers": [
+        "cmd.branch",
+        "cmd.checkout-switch"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "4/8"
+    }
+  ],
+  "summary": {
+    "scenarios": 8,
+    "passed": 8,
+    "steps": "74/74",
+    "objects_byte_identical": "19/34",
+    "fsck_clean": "8/8"
+  }
+}

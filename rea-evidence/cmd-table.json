@@ -1,0 +1,890 @@
+{
+  "exe": "C:/Program Files/Git/mingw64/bin/git.exe",
+  "imageBase": "0x140000000",
+  "tableStart": "0x14032e000",
+  "count": 147,
+  "rows": [
+    {
+      "va": "0x14032e000",
+      "name": "add",
+      "fn": "0x1400039a0",
+      "option": 9
+    },
+    {
+      "va": "0x14032e018",
+      "name": "am",
+      "fn": "0x140009300",
+      "option": 9
+    },
+    {
+      "va": "0x14032e030",
+      "name": "annotate",
+      "fn": "0x14000bf80",
+      "option": 1
+    },
+    {
+      "va": "0x14032e048",
+      "name": "apply",
+      "fn": "0x14000c0c0",
+      "option": 2
+    },
+    {
+      "va": "0x14032e060",
+      "name": "archive",
+      "fn": "0x14000c220",
+      "option": 2
+    },
+    {
+      "va": "0x14032e078",
+      "name": "backfill",
+      "fn": "0x14000c780",
+      "option": 1
+    },
+    {
+      "va": "0x14032e090",
+      "name": "bisect",
+      "fn": "0x1400107e0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e0a8",
+      "name": "blame",
+      "fn": "0x1400128b0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e0c0",
+      "name": "branch",
+      "fn": "0x140014c00",
+      "option": 17
+    },
+    {
+      "va": "0x14032e0d8",
+      "name": "bugreport",
+      "fn": "0x140017d60",
+      "option": 2
+    },
+    {
+      "va": "0x14032e0f0",
+      "name": "bundle",
+      "fn": "0x1400190b0",
+      "option": 2
+    },
+    {
+      "va": "0x14032e108",
+      "name": "cat-file",
+      "fn": "0x14001a690",
+      "option": 1
+    },
+    {
+      "va": "0x14032e120",
+      "name": "check-attr",
+      "fn": "0x14001c420",
+      "option": 1
+    },
+    {
+      "va": "0x14032e138",
+      "name": "check-ignore",
+      "fn": "0x14001cef0",
+      "option": 9
+    },
+    {
+      "va": "0x14032e150",
+      "name": "check-mailmap",
+      "fn": "0x14001d440",
+      "option": 1
+    },
+    {
+      "va": "0x14032e168",
+      "name": "check-ref-format",
+      "fn": "0x14001d600",
+      "option": 32
+    },
+    {
+      "va": "0x14032e180",
+      "name": "checkout",
+      "fn": "0x140024090",
+      "option": 9
+    },
+    {
+      "va": "0x14032e198",
+      "name": "checkout--worker",
+      "fn": "0x14001d8e0",
+      "option": 9
+    },
+    {
+      "va": "0x14032e1b0",
+      "name": "checkout-index",
+      "fn": "0x14001e250",
+      "option": 9
+    },
+    {
+      "va": "0x14032e1c8",
+      "name": "cherry",
+      "fn": "0x14007d7a0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e1e0",
+      "name": "cherry-pick",
+      "fn": "0x1400cd020",
+      "option": 9
+    },
+    {
+      "va": "0x14032e1f8",
+      "name": "clean",
+      "fn": "0x140026a60",
+      "option": 9
+    },
+    {
+      "va": "0x14032e210",
+      "name": "clone",
+      "fn": "0x140028370",
+      "option": 0
+    },
+    {
+      "va": "0x14032e228",
+      "name": "column",
+      "fn": "0x14002c670",
+      "option": 2
+    },
+    {
+      "va": "0x14032e240",
+      "name": "commit",
+      "fn": "0x14002ff50",
+      "option": 9
+    },
+    {
+      "va": "0x14032e258",
+      "name": "commit-graph",
+      "fn": "0x14002d5d0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e270",
+      "name": "commit-tree",
+      "fn": "0x14002db00",
+      "option": 1
+    },
+    {
+      "va": "0x14032e288",
+      "name": "config",
+      "fn": "0x140037780",
+      "option": 18
+    },
+    {
+      "va": "0x14032e2a0",
+      "name": "count-objects",
+      "fn": "0x140039410",
+      "option": 1
+    },
+    {
+      "va": "0x14032e2b8",
+      "name": "credential",
+      "fn": "0x14003b730",
+      "option": 34
+    },
+    {
+      "va": "0x14032e2d0",
+      "name": "credential-cache",
+      "fn": "0x14003a8c0",
+      "option": 0
+    },
+    {
+      "va": "0x14032e2e8",
+      "name": "credential-cache--daemon",
+      "fn": "0x140039900",
+      "option": 0
+    },
+    {
+      "va": "0x14032e300",
+      "name": "credential-store",
+      "fn": "0x14003b2a0",
+      "option": 0
+    },
+    {
+      "va": "0x14032e318",
+      "name": "describe",
+      "fn": "0x14003d1f0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e330",
+      "name": "diagnose",
+      "fn": "0x14003dd80",
+      "option": 2
+    },
+    {
+      "va": "0x14032e348",
+      "name": "diff",
+      "fn": "0x14003f850",
+      "option": 32
+    },
+    {
+      "va": "0x14032e360",
+      "name": "diff-files",
+      "fn": "0x14003e150",
+      "option": 41
+    },
+    {
+      "va": "0x14032e378",
+      "name": "diff-index",
+      "fn": "0x14003e3b0",
+      "option": 33
+    },
+    {
+      "va": "0x14032e390",
+      "name": "diff-pairs",
+      "fn": "0x14003e600",
+      "option": 33
+    },
+    {
+      "va": "0x14032e3a8",
+      "name": "diff-tree",
+      "fn": "0x14003ef70",
+      "option": 33
+    },
+    {
+      "va": "0x14032e3c0",
+      "name": "difftool",
+      "fn": "0x140041230",
+      "option": 2
+    },
+    {
+      "va": "0x14032e3d8",
+      "name": "fast-export",
+      "fn": "0x140045630",
+      "option": 1
+    },
+    {
+      "va": "0x14032e3f0",
+      "name": "fast-import",
+      "fn": "0x14004f190",
+      "option": 33
+    },
+    {
+      "va": "0x14032e408",
+      "name": "fetch",
+      "fn": "0x140056620",
+      "option": 1
+    },
+    {
+      "va": "0x14032e420",
+      "name": "fetch-pack",
+      "fn": "0x140052410",
+      "option": 33
+    },
+    {
+      "va": "0x14032e438",
+      "name": "fmt-merge-msg",
+      "fn": "0x14005a3c0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e450",
+      "name": "for-each-ref",
+      "fn": "0x14005b2c0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e468",
+      "name": "for-each-repo",
+      "fn": "0x14005b2e0",
+      "option": 2
+    },
+    {
+      "va": "0x14032e480",
+      "name": "format-patch",
+      "fn": "0x140079dd0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e498",
+      "name": "fsck",
+      "fn": "0x14005c8d0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e4b0",
+      "name": "fsck-objects",
+      "fn": "0x14005c8d0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e4c8",
+      "name": "fsmonitor--daemon",
+      "fn": "0x140060170",
+      "option": 1
+    },
+    {
+      "va": "0x14032e4e0",
+      "name": "gc",
+      "fn": "0x140067210",
+      "option": 1
+    },
+    {
+      "va": "0x14032e4f8",
+      "name": "get-tar-commit-id",
+      "fn": "0x1400684e0",
+      "option": 32
+    },
+    {
+      "va": "0x14032e510",
+      "name": "grep",
+      "fn": "0x14006a070",
+      "option": 2
+    },
+    {
+      "va": "0x14032e528",
+      "name": "hash-object",
+      "fn": "0x14006c780",
+      "option": 0
+    },
+    {
+      "va": "0x14032e540",
+      "name": "help",
+      "fn": "0x14006df30",
+      "option": 0
+    },
+    {
+      "va": "0x14032e558",
+      "name": "hook",
+      "fn": "0x14006ea90",
+      "option": 1
+    },
+    {
+      "va": "0x14032e570",
+      "name": "index-pack",
+      "fn": "0x1400717f0",
+      "option": 34
+    },
+    {
+      "va": "0x14032e588",
+      "name": "init",
+      "fn": "0x140073fc0",
+      "option": 0
+    },
+    {
+      "va": "0x14032e5a0",
+      "name": "init-db",
+      "fn": "0x140073fc0",
+      "option": 0
+    },
+    {
+      "va": "0x14032e5b8",
+      "name": "interpret-trailers",
+      "fn": "0x140075130",
+      "option": 2
+    },
+    {
+      "va": "0x14032e5d0",
+      "name": "last-modified",
+      "fn": "0x140075a60",
+      "option": 1
+    },
+    {
+      "va": "0x14032e5e8",
+      "name": "log",
+      "fn": "0x140079af0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e600",
+      "name": "ls-files",
+      "fn": "0x14007f0b0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e618",
+      "name": "ls-remote",
+      "fn": "0x1400803e0",
+      "option": 2
+    },
+    {
+      "va": "0x14032e630",
+      "name": "ls-tree",
+      "fn": "0x140081cb0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e648",
+      "name": "mailinfo",
+      "fn": "0x140082510",
+      "option": 2
+    },
+    {
+      "va": "0x14032e660",
+      "name": "mailsplit",
+      "fn": "0x140083070",
+      "option": 32
+    },
+    {
+      "va": "0x14032e678",
+      "name": "maintenance",
+      "fn": "0x140068340",
+      "option": 1
+    },
+    {
+      "va": "0x14032e690",
+      "name": "merge",
+      "fn": "0x1400897e0",
+      "option": 9
+    },
+    {
+      "va": "0x14032e6a8",
+      "name": "merge-base",
+      "fn": "0x1400837b0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e6c0",
+      "name": "merge-file",
+      "fn": "0x140083fb0",
+      "option": 2
+    },
+    {
+      "va": "0x14032e6d8",
+      "name": "merge-index",
+      "fn": "0x140084c20",
+      "option": 33
+    },
+    {
+      "va": "0x14032e6f0",
+      "name": "merge-ours",
+      "fn": "0x140084e90",
+      "option": 33
+    },
+    {
+      "va": "0x14032e708",
+      "name": "merge-recursive",
+      "fn": "0x140084f60",
+      "option": 41
+    },
+    {
+      "va": "0x14032e720",
+      "name": "merge-recursive-ours",
+      "fn": "0x140084f60",
+      "option": 41
+    },
+    {
+      "va": "0x14032e738",
+      "name": "merge-recursive-theirs",
+      "fn": "0x140084f60",
+      "option": 41
+    },
+    {
+      "va": "0x14032e750",
+      "name": "merge-subtree",
+      "fn": "0x140084f60",
+      "option": 41
+    },
+    {
+      "va": "0x14032e768",
+      "name": "merge-tree",
+      "fn": "0x1400861a0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e780",
+      "name": "mktag",
+      "fn": "0x14008b900",
+      "option": 1
+    },
+    {
+      "va": "0x14032e798",
+      "name": "mktree",
+      "fn": "0x14008bc40",
+      "option": 1
+    },
+    {
+      "va": "0x14032e7b0",
+      "name": "multi-pack-index",
+      "fn": "0x14008cab0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e7c8",
+      "name": "mv",
+      "fn": "0x14008cff0",
+      "option": 9
+    },
+    {
+      "va": "0x14032e7e0",
+      "name": "name-rev",
+      "fn": "0x14008f460",
+      "option": 1
+    },
+    {
+      "va": "0x14032e7f8",
+      "name": "notes",
+      "fn": "0x140093d40",
+      "option": 1
+    },
+    {
+      "va": "0x14032e810",
+      "name": "pack-objects",
+      "fn": "0x14009c440",
+      "option": 1
+    },
+    {
+      "va": "0x14032e828",
+      "name": "pack-redundant",
+      "fn": "0x1400a09f0",
+      "option": 97
+    },
+    {
+      "va": "0x14032e840",
+      "name": "pack-refs",
+      "fn": "0x1400a2600",
+      "option": 1
+    },
+    {
+      "va": "0x14032e858",
+      "name": "patch-id",
+      "fn": "0x1400a26c0",
+      "option": 34
+    },
+    {
+      "va": "0x14032e870",
+      "name": "pickaxe",
+      "fn": "0x1400128b0",
+      "option": 1
+    },
+    {
+      "va": "0x14032e888",
+      "name": "prune",
+      "fn": "0x1400a3720",
+      "option": 1
+    },
+    {
+      "va": "0x14032e8a0",
+      "name": "prune-packed",
+      "fn": "0x1400a3080",
+      "option": 1
+    },
+    {
+      "va": "0x14032e8b8",
+      "name": "pull",
+      "fn": "0x1400a3ff0",
+      "option": 9
+    },
+    {
+      "va": "0x14032e8d0",
+      "name": "push",
+      "fn": "0x1400a6380",
+      "option": 1
+    },
+    {
+      "va": "0x14032e8e8",
+      "name": "range-diff",
+      "fn": "0x1400a7c30",
+      "option": 5
+    },
+    {
+      "va": "0x14032e900",
+      "name": "read-tree",
+      "fn": "0x1400a8770",
+      "option": 1
+    },
+    {
+      "va": "0x14032e918",
+      "name": "rebase",
+      "fn": "0x1400aa5f0",
+      "option": 9
+    },
+    {
+      "va": "0x14032e930",
+      "name": "receive-pack",
+      "fn": "0x1400b2750",
+      "option": 0
+    },
+    {
+      "va": "0x14032e948",
+      "name": "reflog",
+      "fn": "0x1400b6c50",
+      "option": 1
+    },
+    {
+      "va": "0x14032e960",
+      "name": "refs",
+      "fn": "0x1400b7530",
+      "option": 1
+    },
+    {
+      "va": "0x14032e978",
+      "name": "remote",
+      "fn": "0x1400be250",
+      "option": 1
+    },
+    {
+      "va": "0x14032e990",
+      "name": "remote-ext",
+      "fn": "0x1400b7d00",
+      "option": 32
+    },
+    {
+      "va": "0x14032e9a8",
+      "name": "remote-fd",
+      "fn": "0x1400b7ed0",
+      "option": 32
+    },
+    {
+      "va": "0x14032e9c0",
+      "name": "repack",
+      "fn": "0x1400be850",
+      "option": 1
+    },
+    {
+      "va": "0x14032e9d8",
+      "name": "replace",
+      "fn": "0x1400c1020",
+      "option": 1
+    },
+    {
+      "va": "0x14032e9f0",
+      "name": "replay",
+      "fn": "0x1400c2530",
+      "option": 1
+    },
+    {
+      "va": "0x14032ea08",
+      "name": "repo",
+      "fn": "0x1400c4c90",
+      "option": 1
+    },
+    {
+      "va": "0x14032ea20",
+      "name": "rerere",
+      "fn": "0x1400c4e00",
+      "option": 1
+    },
+    {
+      "va": "0x14032ea38",
+      "name": "reset",
+      "fn": "0x1400c5a70",
+      "option": 1
+    },
+    {
+      "va": "0x14032ea50",
+      "name": "restore",
+      "fn": "0x140024630",
+      "option": 9
+    },
+    {
+      "va": "0x14032ea68",
+      "name": "rev-list",
+      "fn": "0x1400c7ae0",
+      "option": 33
+    },
+    {
+      "va": "0x14032ea80",
+      "name": "rev-parse",
+      "fn": "0x1400c99b0",
+      "option": 32
+    },
+    {
+      "va": "0x14032ea98",
+      "name": "revert",
+      "fn": "0x1400ccf30",
+      "option": 9
+    },
+    {
+      "va": "0x14032eab0",
+      "name": "rm",
+      "fn": "0x1400cd2e0",
+      "option": 1
+    },
+    {
+      "va": "0x14032eac8",
+      "name": "send-pack",
+      "fn": "0x1400ce640",
+      "option": 1
+    },
+    {
+      "va": "0x14032eae0",
+      "name": "shortlog",
+      "fn": "0x1400d06f0",
+      "option": 6
+    },
+    {
+      "va": "0x14032eaf8",
+      "name": "show",
+      "fn": "0x140078e90",
+      "option": 1
+    },
+    {
+      "va": "0x14032eb10",
+      "name": "show-branch",
+      "fn": "0x1400d1cc0",
+      "option": 1
+    },
+    {
+      "va": "0x14032eb28",
+      "name": "show-index",
+      "fn": "0x1400d3900",
+      "option": 2
+    },
+    {
+      "va": "0x14032eb40",
+      "name": "show-ref",
+      "fn": "0x1400d4190",
+      "option": 1
+    },
+    {
+      "va": "0x14032eb58",
+      "name": "sparse-checkout",
+      "fn": "0x1400d7740",
+      "option": 1
+    },
+    {
+      "va": "0x14032eb70",
+      "name": "stage",
+      "fn": "0x1400039a0",
+      "option": 9
+    },
+    {
+      "va": "0x14032eb88",
+      "name": "stash",
+      "fn": "0x1400de4b0",
+      "option": 9
+    },
+    {
+      "va": "0x14032eba0",
+      "name": "status",
+      "fn": "0x14002fbf0",
+      "option": 9
+    },
+    {
+      "va": "0x14032ebb8",
+      "name": "stripspace",
+      "fn": "0x1400dea40",
+      "option": 0
+    },
+    {
+      "va": "0x14032ebd0",
+      "name": "submodule--helper",
+      "fn": "0x1400e8f70",
+      "option": 1
+    },
+    {
+      "va": "0x14032ebe8",
+      "name": "survey",
+      "fn": "0x1400ea570",
+      "option": 1
+    },
+    {
+      "va": "0x14032ec00",
+      "name": "switch",
+      "fn": "0x1400243b0",
+      "option": 9
+    },
+    {
+      "va": "0x14032ec18",
+      "name": "symbolic-ref",
+      "fn": "0x1400eb200",
+      "option": 1
+    },
+    {
+      "va": "0x14032ec30",
+      "name": "tag",
+      "fn": "0x1400ebb40",
+      "option": 17
+    },
+    {
+      "va": "0x14032ec48",
+      "name": "unpack-file",
+      "fn": "0x1400ee290",
+      "option": 33
+    },
+    {
+      "va": "0x14032ec60",
+      "name": "unpack-objects",
+      "fn": "0x1400eee90",
+      "option": 33
+    },
+    {
+      "va": "0x14032ec78",
+      "name": "update-index",
+      "fn": "0x1400f16f0",
+      "option": 1
+    },
+    {
+      "va": "0x14032ec90",
+      "name": "update-ref",
+      "fn": "0x1400f4ce0",
+      "option": 1
+    },
+    {
+      "va": "0x14032eca8",
+      "name": "update-server-info",
+      "fn": "0x1400f5700",
+      "option": 1
+    },
+    {
+      "va": "0x14032ecc0",
+      "name": "upload-archive",
+      "fn": "0x1400f5ae0",
+      "option": 32
+    },
+    {
+      "va": "0x14032ecd8",
+      "name": "upload-archive--writer",
+      "fn": "0x1400f5980",
+      "option": 32
+    },
+    {
+      "va": "0x14032ecf0",
+      "name": "upload-pack",
+      "fn": "0x1400f5d10",
+      "option": 0
+    },
+    {
+      "va": "0x14032ed08",
+      "name": "var",
+      "fn": "0x1400f63d0",
+      "option": 34
+    },
+    {
+      "va": "0x14032ed20",
+      "name": "verify-commit",
+      "fn": "0x1400f65e0",
+      "option": 1
+    },
+    {
+      "va": "0x14032ed38",
+      "name": "verify-pack",
+      "fn": "0x1400f68a0",
+      "option": 0
+    },
+    {
+      "va": "0x14032ed50",
+      "name": "verify-tag",
+      "fn": "0x1400f6d50",
+      "option": 1
+    },
+    {
+      "va": "0x14032ed68",
+      "name": "version",
+      "fn": "0x14019fa40",
+      "option": 0
+    },
+    {
+      "va": "0x14032ed80",
+      "name": "whatchanged",
+      "fn": "0x140078b70",
+      "option": 65
+    },
+    {
+      "va": "0x14032ed98",
+      "name": "worktree",
+      "fn": "0x1400fb320",
+      "option": 1
+    },
+    {
+      "va": "0x14032edb0",
+      "name": "write-tree",
+      "fn": "0x1400fb5a0",
+      "option": 1
+    }
+  ]
+}

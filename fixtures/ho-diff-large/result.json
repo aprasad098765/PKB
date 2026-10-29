@@ -1,0 +1,313 @@
+{
+  "name": "ho-diff-large",
+  "covers": [
+    "cmd.diff"
+  ],
+  "steps": [
+    {
+      "git": [
+        "init",
+        "-q"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "write": "f"
+    },
+    {
+      "git": [
+        "add",
+        "f"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "commit",
+        "-q",
+        "-m",
+        "x"
+      ],
+      "cwd": ".",
+      "stdout": "",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "write": "f"
+    },
+    {
+      "git": [
+        "diff"
+      ],
+      "cwd": ".",
+      "stdout": "diff --git a/f b/f\nindex 5ae45c4..e6cb07d 100644\n--- a/f\n+++ b/f\n@@ -14,7 +14,7 @@ line 13\n line 14\n line 15\n line 16\n-line 17\n+changed 17\n line 18\n line 19\n line 20\n@@ -31,7 +31,7 @@ line 30\n line 31\n line 32\n line 33\n-line 34\n+changed 34\n line 35\n line 36\n line 37\n@@ -48,7 +48,9 @@ line 47\n line 48\n line 49\n line 50\n-line 51\n+extra a\n+extra b\n+changed 51\n line 52\n line 53\n line 54\n@@ -65,7 +67,7 @@ line 64\n line 65\n line 66\n line 67\n-line 68\n+changed 68\n line 69\n line 70\n line 71\n@@ -82,12 +84,11 @@ line 81\n line 82\n line 83\n line 84\n-line 85\n+changed 85\n line 86\n line 87\n line 88\n line 89\n-line 90\n line 91\n line 92\n line 93\n@@ -99,7 +100,7 @@ line 98\n line 99\n line 100\n line 101\n-line 102\n+changed 102\n line 103\n line 104\n line 105\n@@ -116,5 +117,5 @@ line 115\n line 116\n line 117\n line 118\n-line 119\n+changed 119\n line 120\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "diff",
+        "-U5"
+      ],
+      "cwd": ".",
+      "stdout": "diff --git a/f b/f\nindex 5ae45c4..e6cb07d 100644\n--- a/f\n+++ b/f\n@@ -12,11 +12,11 @@ line 11\n line 12\n line 13\n line 14\n line 15\n line 16\n-line 17\n+changed 17\n line 18\n line 19\n line 20\n line 21\n line 22\n@@ -29,11 +29,11 @@ line 28\n line 29\n line 30\n line 31\n line 32\n line 33\n-line 34\n+changed 34\n line 35\n line 36\n line 37\n line 38\n line 39\n@@ -46,11 +46,13 @@ line 45\n line 46\n line 47\n line 48\n line 49\n line 50\n-line 51\n+extra a\n+extra b\n+changed 51\n line 52\n line 53\n line 54\n line 55\n line 56\n@@ -63,11 +65,11 @@ line 62\n line 63\n line 64\n line 65\n line 66\n line 67\n-line 68\n+changed 68\n line 69\n line 70\n line 71\n line 72\n line 73\n@@ -80,16 +82,15 @@ line 79\n line 80\n line 81\n line 82\n line 83\n line 84\n-line 85\n+changed 85\n line 86\n line 87\n line 88\n line 89\n-line 90\n line 91\n line 92\n line 93\n line 94\n line 95\n@@ -97,11 +98,11 @@ line 96\n line 97\n line 98\n line 99\n line 100\n line 101\n-line 102\n+changed 102\n line 103\n line 104\n line 105\n line 106\n line 107\n@@ -114,7 +115,7 @@ line 113\n line 114\n line 115\n line 116\n line 117\n line 118\n-line 119\n+changed 119\n line 120\n",
+      "stderr": "",
+      "exit": 0
+    }
+  ],
+  "snapshot": [
+    {
+      "path": ".git/",
+      "dir": true
+    },
+    {
+      "path": ".git/COMMIT_EDITMSG",
+      "size": 2,
+      "sha256": "73cb3858a687a8494ca3323053016282f3dad39d42cf62ca4e79dda2aac7d9ac",
+      "text": "x\n"
+    },
+    {
+      "path": ".git/HEAD",
+      "size": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "text": "ref: refs/heads/master\n"
+    },
+    {
+      "path": ".git/config",
+      "size": 130,
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc",
+      "text": "[core]\n\trepositoryformatversion = 0\n\tfilemode = false\n\tbare = false\n\tlogallrefupdates = true\n\tsymlinks = false\n\tignorecase = true\n"
+    },
+    {
+      "path": ".git/description",
+      "size": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+      "text": "Unnamed repository; edit this file 'description' to name the repository.\n"
+    },
+    {
+      "path": ".git/hooks/",
+      "dir": true
+    },
+    {
+      "path": ".git/hooks/applypatch-msg.sample",
+      "size": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "path": ".git/hooks/commit-msg.sample",
+      "size": 896,
+      "sha256": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437"
+    },
+    {
+      "path": ".git/hooks/fsmonitor-watchman.sample",
+      "size": 4726,
+      "sha256": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0"
+    },
+    {
+      "path": ".git/hooks/post-update.sample",
+      "size": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "path": ".git/hooks/pre-applypatch.sample",
+      "size": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "path": ".git/hooks/pre-commit.sample",
+      "size": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "path": ".git/hooks/pre-merge-commit.sample",
+      "size": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "path": ".git/hooks/pre-push.sample",
+      "size": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "path": ".git/hooks/pre-rebase.sample",
+      "size": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "path": ".git/hooks/pre-receive.sample",
+      "size": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "path": ".git/hooks/prepare-commit-msg.sample",
+      "size": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "path": ".git/hooks/push-to-checkout.sample",
+      "size": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "path": ".git/hooks/sendemail-validate.sample",
+      "size": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "path": ".git/hooks/update.sample",
+      "size": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "path": ".git/index",
+      "size": 129,
+      "sha256": "dde8962578794a952c9a0ffc434e9e6a5b29e28cf1b5f66be49ca8baad494520",
+      "index": {
+        "version": 2,
+        "count": 1,
+        "entries": [
+          {
+            "mode": "100644",
+            "size": 972,
+            "oid": "5ae45c4e54e20871415cdbceb29795acb1af4af4",
+            "stage": 0,
+            "flags_namelen": 1,
+            "path": "f"
+          }
+        ],
+        "extensions": [
+          {
+            "sig": "TREE",
+            "len": 25,
+            "data_hex": "003120300a4753631d930c3497ba5465bb0b94cbb473708074"
+          }
+        ],
+        "trailer_ok": true
+      }
+    },
+    {
+      "path": ".git/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/info/exclude",
+      "size": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+      "text": "# git ls-files --others --exclude-from=.git/info/exclude\n# Lines that start with '#' are comments.\n# For a project mostly in C, the following would be a good set of\n# exclude patterns (uncomment them if you want to use them):\n# *.[oa]\n# *~\n"
+    },
+    {
+      "path": ".git/logs/",
+      "dir": true
+    },
+    {
+      "path": ".git/logs/HEAD",
+      "size": 154,
+      "sha256": "411b1d5a5975eac016d22b7c55fd971b1be090710accc76e764c70142559312f",
+      "text": "0000000000000000000000000000000000000000 a71fb646f39fc5b9f55f77345d1facaf3ae2868e C O Mitter <committer@example.com> 1700000180 +0530\tcommit (initial): x\n"
+    },
+    {
+      "path": ".git/logs/refs/",
+      "dir": true
+    },
+    {
+      "path": ".git/logs/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": ".git/logs/refs/heads/master",
+      "size": 154,
+      "sha256": "411b1d5a5975eac016d22b7c55fd971b1be090710accc76e764c70142559312f",
+      "text": "0000000000000000000000000000000000000000 a71fb646f39fc5b9f55f77345d1facaf3ae2868e C O Mitter <committer@example.com> 1700000180 +0530\tcommit (initial): x\n"
+    },
+    {
+      "path": ".git/objects/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/47/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/47/53631d930c3497ba5465bb0b94cbb473708074",
+      "size": 46,
+      "sha256": "bf25b38d774975b0fc3cb1e6040c75fcaf53742df29e87d73184381471f883ea",
+      "object": {
+        "header": "tree 29",
+        "oid": "4753631d930c3497ba5465bb0b94cbb473708074",
+        "content": [
+          "100644 f 5ae45c4e54e20871415cdbceb29795acb1af4af4"
+        ],
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/5a/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/5a/e45c4e54e20871415cdbceb29795acb1af4af4",
+      "size": 246,
+      "sha256": "4542e491da0c29ffcb53057f17bcba2483cd281b37211232b0bd746a5e008c21",
+      "object": {
+        "header": "blob 972",
+        "oid": "5ae45c4e54e20871415cdbceb29795acb1af4af4",
+        "content": "line 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18\nline 19\nline 20\nline 21\nline 22\nline 23\nline 24\nline 25\nline 26\nline 27\nline 28\nline 29\nline 30\nline 31\nline 32\nline 33\nline 34\nline 35\nline 36\nline 37\nline 38\nline 39\nline 40\nline 41\nline 42\nline 43\nline 44\nline 45\nline 46\nline 47\nline 48\nline 49\nline 50\nline 51\nline 52\nline 53\nline 54\nline 55\nline 56\nline 57\nline 58\nline 59\nline 60\nline 61\nline 62\nline 63\nline 64\nline 65\nline 66\nline 67\nline 68\nline 69\nline 70\nline 71\nline 72\nline 73\nline 74\nline 75\nline 76\nline 77\nline 78\nline 79\nline 80\nline 81\nline 82\nline 83\nline 84\nline 85\nline 86\nline 87\nline 88\nline 89\nline 90\nline 91\nline 92\nline 93\nline 94\nline 95\nline 96\nline 97\nline 98\nline 99\nline 100\nline 101\nline 102\nline 103\nline 104\nline 105\nline 106\nline 107\nline 108\nline 109\nline 110\nline 111\nline 112\nline 113\nline 114\nline 115\nline 116\nline 117\nline 118\nline 119\nline 120\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/a7/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/a7/1fb646f39fc5b9f55f77345d1facaf3ae2868e",
+      "size": 129,
+      "sha256": "bb2e283df46a0f36236d7be8091656a6394962c4c6b913ffcda06db1650d2b75",
+      "object": {
+        "header": "commit 165",
+        "oid": "a71fb646f39fc5b9f55f77345d1facaf3ae2868e",
+        "content": "tree 4753631d930c3497ba5465bb0b94cbb473708074\nauthor A U Thor <author@example.com> 1700000180 +0530\ncommitter C O Mitter <committer@example.com> 1700000180 +0530\n\nx\n",
+        "zlib_header_hex": "7801"
+      }
+    },
+    {
+      "path": ".git/objects/info/",
+      "dir": true
+    },
+    {
+      "path": ".git/objects/pack/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/heads/",
+      "dir": true
+    },
+    {
+      "path": ".git/refs/heads/master",
+      "size": 41,
+      "sha256": "f663f9f841eaac9a7a007c3917b17c1ff2c95a105ec30994fadf1b6cee8ac781",
+      "text": "a71fb646f39fc5b9f55f77345d1facaf3ae2868e\n"
+    },
+    {
+      "path": ".git/refs/tags/",
+      "dir": true
+    },
+    {
+      "path": "f",
+      "size": 1001,
+      "sha256": "8aa41c1f19bd25f9aca75495d4878e208c4013d19e3d8e4a54c7a049fbe1af19",
+      "text": "line 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nchanged 17\nline 18\nline 19\nline 20\nline 21\nline 22\nline 23\nline 24\nline 25\nline 26\nline 27\nline 28\nline 29\nline 30\nline 31\nline 32\nline 33\nchanged 34\nline 35\nline 36\nline 37\nline 38\nline 39\nline 40\nline 41\nline 42\nline 43\nline 44\nline 45\nline 46\nline 47\nline 48\nline 49\nline 50\nextra a\nextra b\nchanged 51\nline 52\nline 53\nline 54\nline 55\nline 56\nline 57\nline 58\nline 59\nline 60\nline 61\nline 62\nline 63\nline 64\nline 65\nline 66\nline 67\nchanged 68\nline 69\nline 70\nline 71\nline 72\nline 73\nline 74\nline 75\nline 76\nline 77\nline 78\nline 79\nline 80\nline 81\nline 82\nline 83\nline 84\nchanged 85\nline 86\nline 87\nline 88\nline 89\nline 91\nline 92\nline 93\nline 94\nline 95\nline 96\nline 97\nline 98\nline 99\nline 100\nline 101\nchanged 102\nline 103\nline 104\nline 105\nline 106\nline 107\nline 108\nline 109\nline 110\nline 111\nline 112\nline 113\nline 114\nline 115\nline 116\nline 117\nline 118\nchanged 119\nline 120\n"
+    }
+  ]
+}

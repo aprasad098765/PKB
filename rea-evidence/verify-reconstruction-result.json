@@ -1,0 +1,8 @@
+{
+  "tool": "mcp__rea__verify_reconstruction (rea-agents 6.7.0)",
+  "specification": "git v1 reconstruction (TypeScript) vs git.exe 2.52.0.windows.1; claims cli-terminal, cli-exit, repo-filesystem",
+  "comparison_evidence_id_used": "ev_37b066e584add4fc91845c3d4f6b3c295b2b532fb3428f1ed14c4614ddef5820 (static analysis of src/, not a comparison)",
+  "result": {"code": "invalid_request", "message": "Comparison Evidence identity or authority disagrees"},
+  "why": "verify_reconstruction only accepts comparison Evidence from compare_process_captures (or a structural comparison). capture_process_scenario returned capability_unavailable: 'Windows PTY process capture is unavailable because this adapter does not yet verify descendant cleanup. Use Linux (including WSL for Linux commands) or macOS.' So no REA-native comparison of git.exe and the reimplementation can be recorded on this host.",
+  "substitute": "Behavioural parity is established by harness/parity.mjs (tests/parity-report.json) and tests/interop.mjs, which are not REA Evidence."
+}

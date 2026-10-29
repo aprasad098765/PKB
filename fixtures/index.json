@@ -1,0 +1,4011 @@
+{
+  "captured_with": {
+    "exe": "C:/Program Files/Git/mingw64/bin/git.exe",
+    "version": "git version 2.52.0.windows.1",
+    "sha256": "fc0f1cae1304fcdcf4d0749f421c5ed21471efc856301f92f56d4b844be84363"
+  },
+  "pinned": {
+    "base_epoch": 1700000000,
+    "step_seconds": 60,
+    "tz": "+0530",
+    "author": "A U Thor <author@example.com>",
+    "committer": "C O Mitter <committer@example.com>",
+    "GIT_CONFIG_NOSYSTEM": 1
+  },
+  "scenarios": [
+    {
+      "name": "cli-no-args",
+      "covers": [
+        "cli.dispatch",
+        "cli.exit-codes"
+      ],
+      "steps": [
+        {
+          "argv": "",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": false
+    },
+    {
+      "name": "cli-version",
+      "covers": [
+        "cli.dispatch"
+      ],
+      "steps": [
+        {
+          "argv": "--version",
+          "exit": 0
+        },
+        {
+          "argv": "version",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": false
+    },
+    {
+      "name": "cli-unknown-command",
+      "covers": [
+        "cli.unknown-command"
+      ],
+      "steps": [
+        {
+          "argv": "frobnicate",
+          "exit": 1
+        },
+        {
+          "argv": "stauts",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": false
+    },
+    {
+      "name": "cli-not-a-repo",
+      "covers": [
+        "cli.not-a-repo",
+        "repo.discovery"
+      ],
+      "steps": [
+        {
+          "argv": "status",
+          "exit": 128
+        },
+        {
+          "argv": "log",
+          "exit": 128
+        },
+        {
+          "argv": "add x",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file -t HEAD",
+          "exit": 128
+        },
+        {
+          "argv": "write-tree",
+          "exit": 128
+        },
+        {
+          "argv": "branch",
+          "exit": 128
+        },
+        {
+          "argv": "diff --cached",
+          "exit": 129
+        }
+      ],
+      "raw_git_dir": false
+    },
+    {
+      "name": "cli-worktree-required",
+      "covers": [
+        "cli.worktree-required"
+      ],
+      "steps": [
+        {
+          "argv": "init -q --bare",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 128
+        },
+        {
+          "argv": "add x",
+          "exit": 128
+        },
+        {
+          "argv": "commit -m x",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "repo-discovery-subdir",
+      "covers": [
+        "repo.discovery"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "add c.txt",
+          "exit": 0
+        },
+        {
+          "argv": "status --short",
+          "exit": 0
+        },
+        {
+          "argv": "write-tree",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "repo-git-dir-env",
+      "covers": [
+        "repo.discovery"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "--git-dir=.git add x",
+          "exit": 0
+        },
+        {
+          "argv": "--git-dir=.git write-tree",
+          "exit": 0
+        },
+        {
+          "argv": "-C nosuch status",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "init-default",
+      "covers": [
+        "cmd.init",
+        "refs.files"
+      ],
+      "steps": [
+        {
+          "argv": "init",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "init-quiet-branch",
+      "covers": [
+        "cmd.init"
+      ],
+      "steps": [
+        {
+          "argv": "init -q -b main",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "init-reinit",
+      "covers": [
+        "cmd.init"
+      ],
+      "steps": [
+        {
+          "argv": "init",
+          "exit": 0
+        },
+        {
+          "argv": "init",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "init-directory",
+      "covers": [
+        "cmd.init"
+      ],
+      "steps": [
+        {
+          "argv": "init sub",
+          "exit": 0
+        },
+        {
+          "argv": "status --short",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "init-initial-branch-option",
+      "covers": [
+        "cmd.init"
+      ],
+      "steps": [
+        {
+          "argv": "init --initial-branch=trunk",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "init-bad-option",
+      "covers": [
+        "cmd.init",
+        "cli.exit-codes"
+      ],
+      "steps": [
+        {
+          "argv": "init --bogus",
+          "exit": 129
+        }
+      ],
+      "raw_git_dir": false
+    },
+    {
+      "name": "hash-object",
+      "covers": [
+        "cmd.hash-object",
+        "odb.loose-write",
+        "odb.hash"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object f.txt",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object empty",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object -w f.txt",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object --stdin",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object -w --stdin",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object -t blob f.txt",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object missing.txt",
+          "exit": 128
+        },
+        {
+          "argv": "hash-object -t bogus f.txt",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "hash-object-outside-repo",
+      "covers": [
+        "cmd.hash-object",
+        "odb.hash"
+      ],
+      "steps": [
+        {
+          "argv": "hash-object f.txt",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object -w f.txt",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": false
+    },
+    {
+      "name": "cat-file",
+      "covers": [
+        "cmd.cat-file",
+        "odb.loose-read",
+        "odb.tree-format",
+        "odb.commit-format"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -t HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -s HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p HEAD^{tree}",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -t HEAD^{tree}",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p HEAD:a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file blob HEAD:a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -s HEAD:dir/b.txt",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -e HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -t f2ad6c76f0115a6ba5b00456a849810e7ec0af20",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file -e 0000000000000000000000000000000000000001",
+          "exit": 1
+        },
+        {
+          "argv": "cat-file -p nosuchref",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file -t HEAD:nope.txt",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file",
+          "exit": 129
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "tree-ordering",
+      "covers": [
+        "odb.tree-format",
+        "cmd.write-tree",
+        "index.sort"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "write-tree",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "add-basic",
+      "covers": [
+        "cmd.add",
+        "index.format-v2",
+        "index.sort"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add b",
+          "exit": 0
+        },
+        {
+          "argv": "add a c",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "add-dot-and-update",
+      "covers": [
+        "cmd.add",
+        "index.format-v2"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "status --short",
+          "exit": 0
+        },
+        {
+          "argv": "add -A",
+          "exit": 0
+        },
+        {
+          "argv": "status --short",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "add-nothing",
+      "covers": [
+        "cmd.add"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "add-unmatched",
+      "covers": [
+        "cmd.add",
+        "cli.exit-codes"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add nope",
+          "exit": 128
+        },
+        {
+          "argv": "add a nope",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "add-lock-held",
+      "covers": [
+        "index.lockfile"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "add-ignored",
+      "covers": [
+        "cmd.add"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "add x.log",
+          "exit": 1
+        },
+        {
+          "argv": "status --short",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "write-tree-empty",
+      "covers": [
+        "cmd.write-tree"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "write-tree",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "write-tree-nested",
+      "covers": [
+        "cmd.write-tree",
+        "odb.tree-format"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "write-tree",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p HEAD",
+          "exit": 128
+        },
+        {
+          "argv": "write-tree --bogus",
+          "exit": 129
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-initial",
+      "covers": [
+        "cmd.commit",
+        "odb.commit-format",
+        "refs.files"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m initial commit",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-second",
+      "covers": [
+        "cmd.commit",
+        "refs.files"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m second -m body paragraph",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-all-flag",
+      "covers": [
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -a -m all",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-nothing",
+      "covers": [
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m nothing",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-nothing-untracked",
+      "covers": [
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m nothing",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-empty-repo",
+      "covers": [
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m x",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-empty-message",
+      "covers": [
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m ",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-message-cleanup",
+      "covers": [
+        "cmd.commit",
+        "odb.commit-format"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m   subject  \n\n\n\nbody line   \n\n# not a comment with -m\n\n",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-allow-empty",
+      "covers": [
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit --allow-empty -m empty",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "status-empty-repo",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "status-untracked-new",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add s",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status --short",
+          "exit": 0
+        },
+        {
+          "argv": "status --porcelain",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "status-clean",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "status-mixed",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add n.txt",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "status --porcelain",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "status-staged-delete",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add -A",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "status-branch-other",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b feature",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "log-empty-repo",
+      "covers": [
+        "cmd.log"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "log",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "log-history",
+      "covers": [
+        "cmd.log"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am second\n\nwith a body\nof two lines",
+          "exit": 0
+        },
+        {
+          "argv": "add c",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m third",
+          "exit": 0
+        },
+        {
+          "argv": "log",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        },
+        {
+          "argv": "log -n 2",
+          "exit": 0
+        },
+        {
+          "argv": "log -1 --oneline",
+          "exit": 0
+        },
+        {
+          "argv": "log HEAD~1",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline nosuch",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-clean",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached",
+          "exit": 0
+        },
+        {
+          "argv": "diff --exit-code",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-worktree",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        },
+        {
+          "argv": "diff --exit-code",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-cached",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached",
+          "exit": 0
+        },
+        {
+          "argv": "diff --staged",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-hunks",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add f",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m lines",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        },
+        {
+          "argv": "diff -U1",
+          "exit": 0
+        },
+        {
+          "argv": "diff -U0",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-no-newline",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add f",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m x",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-commits",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am second",
+          "exit": 0
+        },
+        {
+          "argv": "diff HEAD~1 HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "diff HEAD~1",
+          "exit": 0
+        },
+        {
+          "argv": "diff HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "diff nosuch",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-empty-repo",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "branch-ops",
+      "covers": [
+        "cmd.branch",
+        "refs.files"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "branch",
+          "exit": 0
+        },
+        {
+          "argv": "branch feature",
+          "exit": 0
+        },
+        {
+          "argv": "branch zeta",
+          "exit": 0
+        },
+        {
+          "argv": "branch alpha HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "branch",
+          "exit": 0
+        },
+        {
+          "argv": "branch --list",
+          "exit": 0
+        },
+        {
+          "argv": "branch -v",
+          "exit": 0
+        },
+        {
+          "argv": "branch feature",
+          "exit": 128
+        },
+        {
+          "argv": "branch -d zeta",
+          "exit": 0
+        },
+        {
+          "argv": "branch -d nosuch",
+          "exit": 1
+        },
+        {
+          "argv": "branch -D alpha",
+          "exit": 0
+        },
+        {
+          "argv": "branch bad..name",
+          "exit": 128
+        },
+        {
+          "argv": "branch x nosuch",
+          "exit": 128
+        },
+        {
+          "argv": "branch",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "branch-delete-current",
+      "covers": [
+        "cmd.branch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "branch -d master",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "branch-delete-unmerged",
+      "covers": [
+        "cmd.branch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b side",
+          "exit": 0
+        },
+        {
+          "argv": "add s",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m side",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "branch -d side",
+          "exit": 1
+        },
+        {
+          "argv": "branch -D side",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "branch-empty-repo",
+      "covers": [
+        "cmd.branch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "branch",
+          "exit": 0
+        },
+        {
+          "argv": "branch x",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "checkout-branches",
+      "covers": [
+        "cmd.checkout-switch",
+        "refs.files"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -b feature",
+          "exit": 0
+        },
+        {
+          "argv": "add f.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m on feature",
+          "exit": 0
+        },
+        {
+          "argv": "checkout master",
+          "exit": 0
+        },
+        {
+          "argv": "checkout master",
+          "exit": 0
+        },
+        {
+          "argv": "checkout feature",
+          "exit": 0
+        },
+        {
+          "argv": "checkout nosuch",
+          "exit": 1
+        },
+        {
+          "argv": "checkout -b feature",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "switch-branches",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "switch -c topic",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am topic change",
+          "exit": 0
+        },
+        {
+          "argv": "switch master",
+          "exit": 0
+        },
+        {
+          "argv": "switch master",
+          "exit": 0
+        },
+        {
+          "argv": "switch nosuch",
+          "exit": 128
+        },
+        {
+          "argv": "switch -c topic",
+          "exit": 128
+        },
+        {
+          "argv": "switch topic",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "checkout-dirty-conflict",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b other",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am other",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "checkout other",
+          "exit": 1
+        },
+        {
+          "argv": "switch other",
+          "exit": 1
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "checkout-dirty-carry",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "branch same",
+          "exit": 0
+        },
+        {
+          "argv": "checkout same",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "checkout-file",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -- a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -- nope",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "checkout-removes-files",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b more",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m more",
+          "exit": 0
+        },
+        {
+          "argv": "checkout master",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "merge-ff",
+      "covers": [
+        "cmd.merge-ff",
+        "refs.files"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b feature",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m feature work",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "merge feature",
+          "exit": 0
+        },
+        {
+          "argv": "merge feature",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "merge-ff-only-diverged",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b side",
+          "exit": 0
+        },
+        {
+          "argv": "add s",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m side",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "add m",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m main",
+          "exit": 0
+        },
+        {
+          "argv": "merge --ff-only side",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "merge-bad-ref",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "merge nosuch",
+          "exit": 1
+        },
+        {
+          "argv": "merge",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "merge-already-ancestor",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "branch old",
+          "exit": 0
+        },
+        {
+          "argv": "add x",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m x",
+          "exit": 0
+        },
+        {
+          "argv": "merge old",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "cache-tree-order",
+      "covers": [
+        "cmd.write-tree",
+        "index.format-v2"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "write-tree",
+          "exit": 0
+        },
+        {
+          "argv": "add c/e/x",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "cat-file-missing-full-hex",
+      "covers": [
+        "cmd.cat-file"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p 0123456789012345678901234567890123456789",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file -s 0123456789012345678901234567890123456789",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file blob HEAD",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file tree HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p 5fcf681",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "checkout-path-no-dashdash",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "checkout dir",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "checkout-untracked-overwrite",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b t",
+          "exit": 0
+        },
+        {
+          "argv": "add u.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m add u",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "checkout t",
+          "exit": 1
+        },
+        {
+          "argv": "merge t",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "commit-unstaged-only",
+      "covers": [
+        "cmd.commit",
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m x",
+          "exit": 1
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "status-subdir-relative",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "status --porcelain",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "merge-ff-dirty",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b f",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am f",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "merge f",
+          "exit": 1
+        },
+        {
+          "argv": "checkout -- a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "merge f",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "branch-rename-copy",
+      "covers": [
+        "cmd.branch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "branch -M main",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m one",
+          "exit": 0
+        },
+        {
+          "argv": "branch -M main",
+          "exit": 0
+        },
+        {
+          "argv": "branch -m trunk",
+          "exit": 0
+        },
+        {
+          "argv": "branch",
+          "exit": 0
+        },
+        {
+          "argv": "branch side",
+          "exit": 0
+        },
+        {
+          "argv": "branch -m side s2",
+          "exit": 0
+        },
+        {
+          "argv": "branch -m s2 trunk",
+          "exit": 128
+        },
+        {
+          "argv": "branch -M s2 trunk",
+          "exit": 128
+        },
+        {
+          "argv": "branch -m nosuch x",
+          "exit": 128
+        },
+        {
+          "argv": "branch -m bad..name",
+          "exit": 128
+        },
+        {
+          "argv": "branch -c copy1",
+          "exit": 0
+        },
+        {
+          "argv": "branch -c trunk copy1",
+          "exit": 128
+        },
+        {
+          "argv": "branch -C trunk copy1",
+          "exit": 0
+        },
+        {
+          "argv": "branch -c copy1 copy2",
+          "exit": 0
+        },
+        {
+          "argv": "branch -v",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline -1",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "usage-texts",
+      "covers": [
+        "cli.exit-codes"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add -h",
+          "exit": 129
+        },
+        {
+          "argv": "branch -h",
+          "exit": 129
+        },
+        {
+          "argv": "cat-file -h",
+          "exit": 129
+        },
+        {
+          "argv": "checkout -h",
+          "exit": 129
+        },
+        {
+          "argv": "clone -h",
+          "exit": 129
+        },
+        {
+          "argv": "commit -h",
+          "exit": 129
+        },
+        {
+          "argv": "diff -h",
+          "exit": 129
+        },
+        {
+          "argv": "fetch -h",
+          "exit": 129
+        },
+        {
+          "argv": "hash-object -h",
+          "exit": 129
+        },
+        {
+          "argv": "init -h",
+          "exit": 129
+        },
+        {
+          "argv": "log -h",
+          "exit": 129
+        },
+        {
+          "argv": "merge -h",
+          "exit": 129
+        },
+        {
+          "argv": "pull -h",
+          "exit": 129
+        },
+        {
+          "argv": "push -h",
+          "exit": 129
+        },
+        {
+          "argv": "remote -h",
+          "exit": 129
+        },
+        {
+          "argv": "status -h",
+          "exit": 129
+        },
+        {
+          "argv": "switch -h",
+          "exit": 129
+        },
+        {
+          "argv": "write-tree -h",
+          "exit": 129
+        },
+        {
+          "argv": "status --bogus",
+          "exit": 129
+        },
+        {
+          "argv": "commit -x",
+          "exit": 129
+        },
+        {
+          "argv": "diff --bogus",
+          "exit": 129
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "detached-head",
+      "covers": [
+        "cmd.checkout-switch",
+        "cmd.status",
+        "cmd.branch",
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am second",
+          "exit": 0
+        },
+        {
+          "argv": "checkout HEAD~1",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "branch",
+          "exit": 0
+        },
+        {
+          "argv": "add d",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m on detached",
+          "exit": 0
+        },
+        {
+          "argv": "switch master",
+          "exit": 0
+        },
+        {
+          "argv": "switch 5fcf681",
+          "exit": 128
+        },
+        {
+          "argv": "switch --detach 5fcf681",
+          "exit": 0
+        },
+        {
+          "argv": "checkout master",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "diff-move-lines",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m x",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-ignore-rules",
+      "covers": [
+        "cmd.status",
+        "cmd.add"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "status --porcelain",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "status --short",
+          "exit": 0
+        },
+        {
+          "argv": "add a.tmp",
+          "exit": 1
+        },
+        {
+          "argv": "add -f a.tmp",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-log-range-path",
+      "covers": [
+        "cmd.log"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b feat",
+          "exit": 0
+        },
+        {
+          "argv": "add f1",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m f one",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am f two",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline master..feat",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline feat ^master",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline -- a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline -3",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline --reverse",
+          "exit": 0
+        },
+        {
+          "argv": "log -1",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline feat~1",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline master..",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-diff-mixed",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached --stat",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached --name-only",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached --name-status",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached -- dir",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m second",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        },
+        {
+          "argv": "diff HEAD~1 --stat",
+          "exit": 0
+        },
+        {
+          "argv": "diff HEAD~1..HEAD -- a.txt",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-rename-staged",
+      "covers": [
+        "cmd.status",
+        "cmd.commit",
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add -A",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached --stat",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m rename",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-amend",
+      "covers": [
+        "cmd.commit",
+        "cmd.log"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add x",
+          "exit": 0
+        },
+        {
+          "argv": "commit -m wip",
+          "exit": 0
+        },
+        {
+          "argv": "commit --amend -m real message",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        },
+        {
+          "argv": "commit --amend -q -m again",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-commit-file-msg",
+      "covers": [
+        "cmd.commit"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add x",
+          "exit": 0
+        },
+        {
+          "argv": "commit -F msg.txt",
+          "exit": 0
+        },
+        {
+          "argv": "log -1",
+          "exit": 0
+        },
+        {
+          "argv": "add y",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -F -",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline -1",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-branch-misc",
+      "covers": [
+        "cmd.branch",
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am second",
+          "exit": 0
+        },
+        {
+          "argv": "branch old HEAD~1",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -b fromold old",
+          "exit": 0
+        },
+        {
+          "argv": "branch -v",
+          "exit": 0
+        },
+        {
+          "argv": "branch --show-current",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -",
+          "exit": 0
+        },
+        {
+          "argv": "switch -",
+          "exit": 0
+        },
+        {
+          "argv": "branch -d old",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "branch -d fromold",
+          "exit": 0
+        },
+        {
+          "argv": "branch -d a b",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-merge-ff-tree",
+      "covers": [
+        "cmd.merge-ff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b big",
+          "exit": 0
+        },
+        {
+          "argv": "add -A",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m restructure",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q master",
+          "exit": 0
+        },
+        {
+          "argv": "merge --ff-only big",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-add-variants",
+      "covers": [
+        "cmd.add"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "add dir/*.txt",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "add -u",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "add dir/b.txt",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "add d.md",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "add -n .",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-plumbing",
+      "covers": [
+        "cmd.hash-object",
+        "cmd.cat-file",
+        "cmd.write-tree"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object --stdin-paths",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p HEAD^{tree}",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file commit HEAD",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -s HEAD:a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "write-tree --prefix=dir/",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -t HEAD:dir",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -p HEAD:dir",
+          "exit": 0
+        },
+        {
+          "argv": "hash-object -t commit p1",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-untracked-layout",
+      "covers": [
+        "cmd.status"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-diff-large",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add f",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m x",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        },
+        {
+          "argv": "diff -U5",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-diff-code",
+      "covers": [
+        "cmd.diff"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add m.c",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m c",
+          "exit": 0
+        },
+        {
+          "argv": "diff",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-unicode-paths",
+      "covers": [
+        "cmd.status",
+        "cmd.diff",
+        "cmd.add"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "diff --cached --stat",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m u",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-checkout-commit-files",
+      "covers": [
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -am v2",
+          "exit": 0
+        },
+        {
+          "argv": "checkout HEAD~1 -- a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "checkout HEAD a.txt",
+          "exit": 0
+        },
+        {
+          "argv": "status -s",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q HEAD~1",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "ho-errors",
+      "covers": [
+        "cli.exit-codes",
+        "cmd.commit",
+        "cmd.branch",
+        "cmd.log",
+        "cmd.cat-file"
+      ],
+      "steps": [
+        {
+          "argv": "init -q",
+          "exit": 0
+        },
+        {
+          "argv": "add .",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m first",
+          "exit": 0
+        },
+        {
+          "argv": "commit",
+          "exit": 1
+        },
+        {
+          "argv": "branch -d",
+          "exit": 128
+        },
+        {
+          "argv": "log -n",
+          "exit": 128
+        },
+        {
+          "argv": "cat-file -t",
+          "exit": 129
+        },
+        {
+          "argv": "cat-file bogus HEAD",
+          "exit": 128
+        },
+        {
+          "argv": "switch",
+          "exit": 128
+        },
+        {
+          "argv": "checkout",
+          "exit": 0
+        },
+        {
+          "argv": "status extra-path-not-there",
+          "exit": 0
+        },
+        {
+          "argv": "diff HEAD HEAD~5",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-clone-basic",
+      "covers": [
+        "net.clone"
+      ],
+      "steps": [
+        {
+          "argv": "clone {URL}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "branch -a",
+          "exit": 0
+        },
+        {
+          "argv": "branch -r",
+          "exit": 0
+        },
+        {
+          "argv": "branch -vv",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-clone-variants",
+      "covers": [
+        "net.clone"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/r.git",
+          "exit": 0
+        },
+        {
+          "argv": "clone {URL}/r.git r",
+          "exit": 128
+        },
+        {
+          "argv": "clone -b side {URL}/r.git s",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "clone {URL}/nope.git n",
+          "exit": 128
+        },
+        {
+          "argv": "clone -b nosuch {URL}/r.git x",
+          "exit": 128
+        },
+        {
+          "argv": "clone {URL}/empty.git e",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-checkout-remote-branch",
+      "covers": [
+        "net.clone",
+        "cmd.checkout-switch"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "checkout side",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "switch master",
+          "exit": 0
+        },
+        {
+          "argv": "branch -vv",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-fetch",
+      "covers": [
+        "net.fetch"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "fetch",
+          "exit": 0
+        },
+        {
+          "argv": "fetch",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline origin/master",
+          "exit": 0
+        },
+        {
+          "argv": "merge origin/master",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "fetch origin",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        },
+        {
+          "argv": "fetch {URL}/r.git side",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-push",
+      "covers": [
+        "net.push"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {AUTH}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "add n.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m local",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b feat",
+          "exit": 0
+        },
+        {
+          "argv": "add f.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m feature",
+          "exit": 0
+        },
+        {
+          "argv": "push -u origin feat",
+          "exit": 0
+        },
+        {
+          "argv": "branch -vv",
+          "exit": 0
+        },
+        {
+          "argv": "push origin --delete feat",
+          "exit": 0
+        },
+        {
+          "argv": "push origin side:copy",
+          "exit": 1
+        },
+        {
+          "argv": "push origin :copy",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-push-rejected",
+      "covers": [
+        "net.push"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {AUTH}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "add m.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m mine",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 1
+        },
+        {
+          "argv": "fetch -q",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 1
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "push --force",
+          "exit": 0
+        },
+        {
+          "argv": "push origin nosuch",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-push-auth",
+      "covers": [
+        "net.push",
+        "net.auth"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "add x",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m x",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 128
+        },
+        {
+          "argv": "push {AUTH}/r.git master",
+          "exit": 0
+        },
+        {
+          "argv": "push {AUTH}/nope.git master",
+          "exit": 128
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-pull",
+      "covers": [
+        "net.pull"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "pull",
+          "exit": 0
+        },
+        {
+          "argv": "pull",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "pull -q",
+          "exit": 0
+        },
+        {
+          "argv": "pull origin side",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline -3",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-pull-refused",
+      "covers": [
+        "net.pull"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "add m.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m mine",
+          "exit": 0
+        },
+        {
+          "argv": "pull",
+          "exit": 128
+        },
+        {
+          "argv": "pull --ff-only",
+          "exit": 128
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b lonely",
+          "exit": 0
+        },
+        {
+          "argv": "pull",
+          "exit": 1
+        },
+        {
+          "argv": "pull nosuchremote",
+          "exit": 1
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-ssh",
+      "covers": [
+        "net.ssh",
+        "net.clone",
+        "net.push",
+        "net.fetch"
+      ],
+      "steps": [
+        {
+          "argv": "clone {SSH}/r.git c1",
+          "exit": 0
+        },
+        {
+          "argv": "clone -q {SCP}r.git c2",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "branch -a",
+          "exit": 0
+        },
+        {
+          "argv": "add n.txt",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m over ssh",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 0
+        },
+        {
+          "argv": "fetch",
+          "exit": 0
+        },
+        {
+          "argv": "pull",
+          "exit": 0
+        },
+        {
+          "argv": "push origin master:refs/heads/viassh",
+          "exit": 0
+        },
+        {
+          "argv": "fetch --prune",
+          "exit": 0
+        },
+        {
+          "argv": "push origin --delete viassh",
+          "exit": 0
+        },
+        {
+          "argv": "clone {SSH}/missing.git m",
+          "exit": 128
+        },
+        {
+          "argv": "log --oneline -2",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-ho-tags-prune",
+      "covers": [
+        "net.fetch",
+        "net.clone"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "branch -r",
+          "exit": 0
+        },
+        {
+          "argv": "cat-file -t v1",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline -1 light",
+          "exit": 0
+        },
+        {
+          "argv": "fetch",
+          "exit": 0
+        },
+        {
+          "argv": "fetch --prune",
+          "exit": 0
+        },
+        {
+          "argv": "branch -a",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-ho-remote-add-upstream",
+      "covers": [
+        "net.push",
+        "net.remote"
+      ],
+      "steps": [
+        {
+          "argv": "init -q w",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m a",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 128
+        },
+        {
+          "argv": "remote add origin {AUTH}/p.git",
+          "exit": 0
+        },
+        {
+          "argv": "remote -v",
+          "exit": 0
+        },
+        {
+          "argv": "remote",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 128
+        },
+        {
+          "argv": "push -u origin master",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b topic",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 128
+        },
+        {
+          "argv": "push origin HEAD:refs/heads/other",
+          "exit": 0
+        },
+        {
+          "argv": "branch -vv",
+          "exit": 0
+        },
+        {
+          "argv": "branch -u origin/other",
+          "exit": 0
+        },
+        {
+          "argv": "branch -vv",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-ho-big-and-merge",
+      "covers": [
+        "net.fetch",
+        "net.clone"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {URL}/b.git c",
+          "exit": 0
+        },
+        {
+          "argv": "fetch",
+          "exit": 0
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        },
+        {
+          "argv": "merge",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        },
+        {
+          "argv": "status",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-ho-local-clone",
+      "covers": [
+        "net.clone",
+        "net.push"
+      ],
+      "steps": [
+        {
+          "argv": "init -q orig",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m one",
+          "exit": 0
+        },
+        {
+          "argv": "branch dev",
+          "exit": 0
+        },
+        {
+          "argv": "clone -q orig copy",
+          "exit": 0
+        },
+        {
+          "argv": "branch -a",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        },
+        {
+          "argv": "add b",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m two",
+          "exit": 0
+        },
+        {
+          "argv": "push origin master:fromcopy",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline fromcopy",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-ho-pull-ssh",
+      "covers": [
+        "net.pull",
+        "net.ssh"
+      ],
+      "steps": [
+        {
+          "argv": "clone -q {SCP}r.git c",
+          "exit": 0
+        },
+        {
+          "argv": "pull --ff-only",
+          "exit": 0
+        },
+        {
+          "argv": "pull --ff-only",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline -2",
+          "exit": 0
+        },
+        {
+          "argv": "checkout -q -b mine",
+          "exit": 0
+        },
+        {
+          "argv": "add x",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m x",
+          "exit": 0
+        },
+        {
+          "argv": "push -u origin mine",
+          "exit": 0
+        },
+        {
+          "argv": "pull",
+          "exit": 0
+        },
+        {
+          "argv": "add z",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m z",
+          "exit": 0
+        },
+        {
+          "argv": "push",
+          "exit": 1
+        },
+        {
+          "argv": "pull --ff-only",
+          "exit": 128
+        },
+        {
+          "argv": "status -sb",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    },
+    {
+      "name": "net-push-new-repo",
+      "covers": [
+        "net.push"
+      ],
+      "steps": [
+        {
+          "argv": "init -q w",
+          "exit": 0
+        },
+        {
+          "argv": "add a",
+          "exit": 0
+        },
+        {
+          "argv": "commit -q -m a",
+          "exit": 0
+        },
+        {
+          "argv": "push {AUTH}/fresh.git master",
+          "exit": 0
+        },
+        {
+          "argv": "clone -q {URL}/fresh.git back",
+          "exit": 0
+        },
+        {
+          "argv": "log --oneline",
+          "exit": 0
+        }
+      ],
+      "raw_git_dir": true
+    }
+  ]
+}

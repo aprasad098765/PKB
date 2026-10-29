@@ -1,0 +1,126 @@
+{
+  "generated": "2026-10-29T06:37:10.057Z",
+  "impl": "node src/cli.ts",
+  "scenarios": [
+    {
+      "name": "net-ho-tags-prune",
+      "covers": [
+        "net.fetch",
+        "net.clone"
+      ],
+      "ok": true,
+      "stepDiffs": [],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/1"
+    },
+    {
+      "name": "net-ho-remote-add-upstream",
+      "covers": [
+        "net.push",
+        "net.remote"
+      ],
+      "ok": false,
+      "stepDiffs": [
+        {
+          "step": 14,
+          "argv": "push origin HEAD:refs/heads/other",
+          "diff": [
+            "stderr"
+          ],
+          "want": {
+            "stdout": "",
+            "stderr": "To http://<HOST>/p.git\n * [new branch]      HEAD -> other\n"
+          },
+          "got": {
+            "stdout": "",
+            "stderr": "To http://<HOST>/p.git\n * [new branch]      topic -> other\n"
+          }
+        }
+      ],
+      "snapshotDiffs": [],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "2/3"
+    },
+    {
+      "name": "net-ho-big-and-merge",
+      "covers": [
+        "net.fetch",
+        "net.clone"
+      ],
+      "ok": false,
+      "stepDiffs": [],
+      "snapshotDiffs": [
+        "content c/.pkb/logs/HEAD differs",
+        "content c/.pkb/logs/refs/heads/master differs"
+      ],
+      "fsck": {
+        "exit": 0,
+        "repos": 1,
+        "output": ""
+      },
+      "objectsByteIdentical": "0/0"
+    },
+    {
+      "name": "net-ho-local-clone",
+      "covers": [
+        "net.clone",
+        "net.push"
+      ],
+      "ok": false,
+      "stepDiffs": [
+        {
+          "step": 11,
+          "argv": "push origin master:fromcopy",
+          "diff": [
+            "stderr"
+          ],
+          "want": {
+            "stdout": "",
+            "stderr": "To <ROOT>/orig\n * [new branch]      master -> fromcopy\n"
+          },
+          "got": {
+            "stdout": "",
+            "stderr": "To <ROOT>\\orig\n * [new branch]      master -> fromcopy\n"
+          }
+        }
+      ],
+      "snapshotDiffs": [
+        "content copy/.pkb/config differs",
+        "content copy/.pkb/logs/HEAD differs",
+        "content copy/.pkb/logs/refs/heads/master differs",
+        "content copy/.pkb/logs/refs/remotes/origin/HEAD differs",
+        "missing copy/.pkb/objects/67/",
+        "missing copy/.pkb/objects/67/0272beb6d3b0acc8021e3fd04380662ae185b5",
+        "missing copy/.pkb/objects/78/",
+        "missing copy/.pkb/objects/78/981922613b2afb6025042ff6bd878ac1994e85",
+        "missing copy/.pkb/objects/aa/",
+        "missing copy/.pkb/objects/aa/ff74984cccd156a469afa7d9ab10e4777beb24",
+        "unexpected copy/.pkb/objects/pack/pack-e0267959faf09e9f1d86dd5b51747d932c8057a3.idx",
+        "unexpected copy/.pkb/objects/pack/pack-e0267959faf09e9f1d86dd5b51747d932c8057a3.pack",
+        "unexpected copy/.pkb/objects/pack/pack-e0267959faf09e9f1d86dd5b51747d932c8057a3.rev"
+      ],
+      "fsck": {
+        "exit": 0,
+        "repos": 2,
+        "output": ""
+      },
+      "objectsByteIdentical": "6/9"
+    }
+  ],
+  "summary": {
+    "scenarios": 4,
+    "passed": 1,
+    "steps": "39/41",
+    "objects_byte_identical": "8/13",
+    "fsck_clean": "4/4"
+  }
+}

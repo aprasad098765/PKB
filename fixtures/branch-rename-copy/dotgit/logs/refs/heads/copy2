@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 233eb734044f2af8a43543632c1a16a001f30281 C O Mitter <committer@example.com> 1700000300 +0530	commit (initial): one
+233eb734044f2af8a43543632c1a16a001f30281 233eb734044f2af8a43543632c1a16a001f30281 C O Mitter <committer@example.com> 1700000360 +0530	Branch: renamed refs/heads/main to refs/heads/main
+233eb734044f2af8a43543632c1a16a001f30281 233eb734044f2af8a43543632c1a16a001f30281 C O Mitter <committer@example.com> 1700000420 +0530	Branch: renamed refs/heads/main to refs/heads/trunk
+233eb734044f2af8a43543632c1a16a001f30281 233eb734044f2af8a43543632c1a16a001f30281 C O Mitter <committer@example.com> 1700001020 +0530	Branch: copied refs/heads/trunk to refs/heads/copy1
+233eb734044f2af8a43543632c1a16a001f30281 233eb734044f2af8a43543632c1a16a001f30281 C O Mitter <committer@example.com> 1700001080 +0530	Branch: copied refs/heads/copy1 to refs/heads/copy2

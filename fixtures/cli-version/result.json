@@ -1,0 +1,27 @@
+{
+  "name": "cli-version",
+  "covers": [
+    "cli.dispatch"
+  ],
+  "steps": [
+    {
+      "git": [
+        "--version"
+      ],
+      "cwd": ".",
+      "stdout": "git version 2.52.0.windows.1\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "git": [
+        "version"
+      ],
+      "cwd": ".",
+      "stdout": "git version 2.52.0.windows.1\n",
+      "stderr": "",
+      "exit": 0
+    }
+  ],
+  "snapshot": []
+}

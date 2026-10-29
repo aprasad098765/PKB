@@ -1,0 +1,7 @@
+0000000000000000000000000000000000000000 5fcf681214f58c01a125fc2f8af5428e4c25cd13 C O Mitter <committer@example.com> 1700000240 +0530	commit (initial): first
+5fcf681214f58c01a125fc2f8af5428e4c25cd13 311ffe18af61f98c8582a8fe7cea90ed75e21cea C O Mitter <committer@example.com> 1700000360 +0530	commit: second
+311ffe18af61f98c8582a8fe7cea90ed75e21cea 5fcf681214f58c01a125fc2f8af5428e4c25cd13 C O Mitter <committer@example.com> 1700000420 +0530	checkout: moving from master to HEAD~1
+5fcf681214f58c01a125fc2f8af5428e4c25cd13 6a23a335fcaa8e83ee762298d9d06261393f0552 C O Mitter <committer@example.com> 1700000780 +0530	commit: on detached
+6a23a335fcaa8e83ee762298d9d06261393f0552 311ffe18af61f98c8582a8fe7cea90ed75e21cea C O Mitter <committer@example.com> 1700000840 +0530	checkout: moving from 6a23a335fcaa8e83ee762298d9d06261393f0552 to master
+311ffe18af61f98c8582a8fe7cea90ed75e21cea 5fcf681214f58c01a125fc2f8af5428e4c25cd13 C O Mitter <committer@example.com> 1700000960 +0530	checkout: moving from master to 5fcf681
+5fcf681214f58c01a125fc2f8af5428e4c25cd13 311ffe18af61f98c8582a8fe7cea90ed75e21cea C O Mitter <committer@example.com> 1700001020 +0530	checkout: moving from 5fcf681214f58c01a125fc2f8af5428e4c25cd13 to master
